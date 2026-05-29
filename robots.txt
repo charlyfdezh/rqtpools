@@ -1,0 +1,5 @@
+# RQT Pools - robots.txt
+User-agent: *
+Allow: /
+
+Sitemap: https://rqtpools.com/sitemap.xml
