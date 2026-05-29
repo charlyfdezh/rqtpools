@@ -1,0 +1,32 @@
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*~
+
+# Logs y temporales
+*.log
+*.tmp
+.cache/
+
+# Dependencias (por si en el futuro se añade Node)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Variables de entorno (NUNCA subir API keys)
+.env
+.env.local
+.env.*.local
+*.key
+secrets/
+
+# Build (por si en el futuro se compila)
+dist/
+build/
+out/
