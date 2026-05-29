@@ -795,28 +795,64 @@
       return ok;
     }
 
+    // ============================================================
+    //  FORMSPREE - Guardado de leads en base de datos
+    //  1) Crea una cuenta gratis en https://formspree.io
+    //  2) Crea un formulario y copia su endpoint (ej: https://formspree.io/f/abcdwxyz)
+    //  3) Pega ese endpoint aquí abajo sustituyendo TU_ID_AQUI
+    //  Mientras no lo configures, la web funciona igual (solo no guarda el lead).
+    // ============================================================
+    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/TU_ID_AQUI';
+
+    function getLead() {
+      return {
+        nombre:    document.getElementById('q-nombre').value.trim(),
+        localidad: document.getElementById('q-localidad').value.trim(),
+        telefono:  document.getElementById('q-telefono').value.trim() || 'No indicado',
+        detalles:  document.getElementById('q-detalles').value.trim() || '-',
+        servicio:  answers.servicio || 'Sin especificar',
+        tipo_piscina: answers.tipo || 'Sin especificar',
+        cuando:    answers.cuando || 'Sin especificar',
+        acepta_marketing: document.getElementById('q-marketing').checked ? 'Sí' : 'No',
+        fecha:     new Date().toLocaleString('es-ES')
+      };
+    }
+
     function buildMessage() {
-      const nombre = document.getElementById('q-nombre').value.trim();
-      const localidad = document.getElementById('q-localidad').value.trim();
-      const tel = document.getElementById('q-telefono').value.trim();
-      const det = document.getElementById('q-detalles').value.trim();
-      const marketing = document.getElementById('q-marketing').checked ? 'Sí' : 'No';
+      const d = getLead();
       return [
         'Hola RQT Pools, me gustaría solicitar un presupuesto.',
         '',
-        'Servicio: ' + (answers.servicio || 'Sin especificar'),
-        'Tipo de piscina: ' + (answers.tipo || 'Sin especificar'),
-        'Cuándo: ' + (answers.cuando || 'Sin especificar'),
-        'Nombre: ' + nombre,
-        'Localidad: ' + localidad,
-        'Teléfono: ' + (tel || 'No indicado'),
-        'Detalles: ' + (det || '-'),
-        'Acepta comunicaciones comerciales: ' + marketing
+        'Servicio: ' + d.servicio,
+        'Tipo de piscina: ' + d.tipo_piscina,
+        'Cuándo: ' + d.cuando,
+        'Nombre: ' + d.nombre,
+        'Localidad: ' + d.localidad,
+        'Teléfono: ' + d.telefono,
+        'Detalles: ' + d.detalles,
+        'Acepta comunicaciones comerciales: ' + d.acepta_marketing
       ].join('\n');
+    }
+
+    // Guarda el lead en Formspree (no bloquea la apertura de WhatsApp/correo)
+    function saveLead(canal) {
+      if (FORMSPREE_ENDPOINT.indexOf('TU_ID_AQUI') !== -1) return; // aún sin configurar
+      const data = getLead();
+      data.canal = canal;
+      data._subject = 'Nuevo lead RQT Pools - ' + data.nombre + ' (' + data.localidad + ')';
+      try {
+        fetch(FORMSPREE_ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data),
+          keepalive: true
+        }).catch(function () {});
+      } catch (e) {}
     }
 
     document.getElementById('send-wa').addEventListener('click', () => {
       if (!validate()) return;
+      saveLead('WhatsApp');
       const msg = encodeURIComponent(buildMessage());
       window.open('https://wa.me/34678137051?text=' + msg, '_blank');
       showStep('done');
@@ -824,6 +860,7 @@
 
     document.getElementById('send-email').addEventListener('click', () => {
       if (!validate()) return;
+      saveLead('Correo');
       const subject = encodeURIComponent('Solicitud de presupuesto - RQT Pools');
       const body = encodeURIComponent(buildMessage());
       window.location.href = 'mailto:info@rqtpools.com?subject=' + subject + '&body=' + body;
