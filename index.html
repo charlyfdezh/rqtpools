@@ -504,8 +504,14 @@
                   <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="localidad">Indica tu localidad.</p>
                 </div>
                 <div>
-                  <label for="q-telefono" class="mb-1.5 block text-sm font-600">Teléfono <span class="font-400 text-muted">(opcional)</span></label>
-                  <input id="q-telefono" type="tel" autocomplete="tel" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Para llamarte si lo prefieres" />
+                  <label for="q-telefono" class="mb-1.5 block text-sm font-600">Teléfono <span class="text-brand">*</span></label>
+                  <input id="q-telefono" type="tel" autocomplete="tel" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Para poder llamarte" />
+                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="telefono">Indica un teléfono de contacto.</p>
+                </div>
+                <div>
+                  <label for="q-email" class="mb-1.5 block text-sm font-600">Correo <span class="font-400 text-muted">(opcional)</span></label>
+                  <input id="q-email" type="email" autocomplete="email" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="tucorreo@ejemplo.com" />
+                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="email">Revisa el formato del correo.</p>
                 </div>
                 <div>
                   <label for="q-detalles" class="mb-1.5 block text-sm font-600">Detalles <span class="font-400 text-muted">(opcional)</span></label>
@@ -727,6 +733,7 @@
   </div>
 
   <!-- ========================= SCRIPTS ========================= -->
+  <script src="assets/quiz-logic.js"></script>
   <script>
     // ---- Menú móvil ----
     const menuBtn = document.getElementById('menuBtn');
@@ -783,19 +790,35 @@
 
     backBtn.addEventListener('click', () => { if (current > 0) { current--; showStep(current); } });
 
-    // Validación paso 4
+    // Lee los datos del formulario desde el DOM
+    function readForm() {
+      return {
+        nombre:    document.getElementById('q-nombre').value,
+        localidad: document.getElementById('q-localidad').value,
+        telefono:  document.getElementById('q-telefono').value,
+        email:     document.getElementById('q-email').value,
+        detalles:  document.getElementById('q-detalles').value,
+        servicio:  answers.servicio,
+        tipo:      answers.tipo,
+        cuando:    answers.cuando,
+        marketing: document.getElementById('q-marketing').checked,
+        privacy:   document.getElementById('q-privacy').checked
+      };
+    }
+
+    // Muestra/oculta el mensaje de error de un campo
+    function toggleError(campo, mostrar) {
+      const el = document.querySelector('[data-err="' + campo + '"]');
+      if (el) el.classList.toggle('hidden', !mostrar);
+    }
+
+    // Validación paso 4 (delega las reglas en QuizLogic)
     function validate() {
-      let ok = true;
-      const nombre = document.getElementById('q-nombre');
-      const localidad = document.getElementById('q-localidad');
-      const privacy = document.getElementById('q-privacy');
-      const errN = document.querySelector('[data-err="nombre"]');
-      const errL = document.querySelector('[data-err="localidad"]');
-      const errP = document.querySelector('[data-err="privacy"]');
-      if (!nombre.value.trim()) { errN.classList.remove('hidden'); ok = false; } else { errN.classList.add('hidden'); }
-      if (!localidad.value.trim()) { errL.classList.remove('hidden'); ok = false; } else { errL.classList.add('hidden'); }
-      if (!privacy.checked) { errP.classList.remove('hidden'); ok = false; } else { errP.classList.add('hidden'); }
-      return ok;
+      const result = QuizLogic.validateLead(readForm());
+      ['nombre', 'localidad', 'telefono', 'email', 'privacy'].forEach(function (campo) {
+        toggleError(campo, !!result.errors[campo]);
+      });
+      return result.valid;
     }
 
     // ============================================================
@@ -807,42 +830,15 @@
     // ============================================================
     const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjgzzany';
 
-    function getLead() {
-      return {
-        nombre:    document.getElementById('q-nombre').value.trim(),
-        localidad: document.getElementById('q-localidad').value.trim(),
-        telefono:  document.getElementById('q-telefono').value.trim() || 'No indicado',
-        detalles:  document.getElementById('q-detalles').value.trim() || '-',
-        servicio:  answers.servicio || 'Sin especificar',
-        tipo_piscina: answers.tipo || 'Sin especificar',
-        cuando:    answers.cuando || 'Sin especificar',
-        acepta_marketing: document.getElementById('q-marketing').checked ? 'Sí' : 'No',
-        fecha:     new Date().toLocaleString('es-ES')
-      };
-    }
-
     function buildMessage() {
-      const d = getLead();
-      return [
-        'Hola RQT Pools, me gustaría solicitar un presupuesto.',
-        '',
-        'Servicio: ' + d.servicio,
-        'Tipo de piscina: ' + d.tipo_piscina,
-        'Cuándo: ' + d.cuando,
-        'Nombre: ' + d.nombre,
-        'Localidad: ' + d.localidad,
-        'Teléfono: ' + d.telefono,
-        'Detalles: ' + d.detalles,
-        'Acepta comunicaciones comerciales: ' + d.acepta_marketing
-      ].join('\n');
+      return QuizLogic.buildMessage(readForm());
     }
 
     // Guarda el lead en Formspree (no bloquea la apertura de WhatsApp/correo)
     function saveLead(canal) {
-      if (FORMSPREE_ENDPOINT.indexOf('TU_ID_AQUI') !== -1) return; // aún sin configurar
-      const data = getLead();
-      data.canal = canal;
-      data._subject = 'Nuevo lead RQT Pools - ' + data.nombre + ' (' + data.localidad + ')';
+      if (!QuizLogic.isFormspreeConfigured(FORMSPREE_ENDPOINT)) return; // aún sin configurar
+      const data = QuizLogic.buildLeadPayload(readForm(), canal);
+      data.fecha = new Date().toLocaleString('es-ES');
       try {
         fetch(FORMSPREE_ENDPOINT, {
           method: 'POST',
@@ -876,7 +872,7 @@
       answers.tipo = null;
       answers.cuando = null;
       document.querySelectorAll('.opt').forEach(b => b.setAttribute('aria-pressed', 'false'));
-      ['q-nombre', 'q-localidad', 'q-telefono', 'q-detalles'].forEach(id => { document.getElementById(id).value = ''; });
+      ['q-nombre', 'q-localidad', 'q-telefono', 'q-email', 'q-detalles'].forEach(id => { document.getElementById(id).value = ''; });
       document.getElementById('q-privacy').checked = false;
       document.getElementById('q-marketing').checked = false;
       document.querySelectorAll('[data-err]').forEach(e => e.classList.add('hidden'));
