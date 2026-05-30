@@ -381,7 +381,7 @@
         <div class="reveal grid gap-px overflow-hidden rounded-[1.25rem] border border-line bg-line md:grid-cols-3">
           <div class="bg-white p-7">
             <span class="font-display text-5xl font-800 text-brand/25">01</span>
-            <h3 class="mt-4 font-display text-xl font-700">Cuéntanos tu piscina</h3>
+            <h3 class="mt-4 font-display text-xl font-700">Cuéntanos sobre tu piscina</h3>
             <p class="mt-2 text-sm text-muted">Rellena el cuestionario en menos de un minuto. Sin llamadas ni esperas.</p>
           </div>
           <div class="bg-white p-7">
@@ -474,7 +474,7 @@
                 <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Particular desmontable" aria-pressed="false"><i class="ph ph-circle-half text-brandDeep text-[20px]"></i> Particular desmontable</button>
                 <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Comunidad de vecinos" aria-pressed="false"><i class="ph ph-buildings text-brandDeep text-[20px]"></i> Comunidad de vecinos</button>
                 <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Hotel o negocio" aria-pressed="false"><i class="ph ph-storefront text-brandDeep text-[20px]"></i> Hotel o negocio</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand sm:col-span-2" data-group="tipo" data-value="Spa o jacuzzi" aria-pressed="false"><i class="ph ph-hot-tub text-brandDeep text-[20px]"></i> Spa o jacuzzi</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand sm:col-span-2" data-group="tipo" data-value="Spa o jacuzzi" aria-pressed="false"><i class="ph ph-bathtub text-brandDeep text-[20px]"></i> Spa o jacuzzi</button>
               </div>
             </div>
 
@@ -546,6 +546,9 @@
                 <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-[#1ebe5d] px-6 py-3 font-700 text-white"><i class="ph-fill ph-whatsapp-logo text-[20px]"></i> WhatsApp</a>
                 <a href="tel:+34678137051" class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3 font-700 text-brandDeep"><i class="ph ph-phone-call text-[20px]"></i> 678 13 70 51</a>
               </div>
+              <button type="button" id="quiz-restart" class="mx-auto mt-6 inline-flex items-center gap-2 text-sm font-700 text-brandDeep transition hover:text-ink">
+                <i class="ph ph-arrow-counter-clockwise text-[18px]"></i> Rellenar otra solicitud
+              </button>
             </div>
 
             <!-- Navegación -->
@@ -676,7 +679,7 @@
         <ul class="space-y-3 text-sm">
           <li><a href="tel:+34678137051" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph ph-phone text-brand"></i> +34 678 13 70 51</a></li>
           <li><a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph-fill ph-whatsapp-logo text-brand"></i> Escríbenos por WhatsApp</a></li>
-          <li><a href="mailto:info@rqtpools.com" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph ph-envelope-simple text-brand"></i> info@rqtpools.com</a></li>
+          <li><a href="mailto:hola@rqtpools.com" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph ph-envelope-simple text-brand"></i> hola@rqtpools.com</a></li>
         </ul>
       </div>
 
@@ -863,9 +866,27 @@
       saveLead('Correo');
       const subject = encodeURIComponent('Solicitud de presupuesto - RQT Pools');
       const body = encodeURIComponent(buildMessage());
-      window.location.href = 'mailto:info@rqtpools.com?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:hola@rqtpools.com?subject=' + subject + '&body=' + body;
       showStep('done');
     });
+
+    // Reiniciar el cuestionario para enviar otra solicitud
+    function resetQuiz() {
+      answers.servicio = null;
+      answers.tipo = null;
+      answers.cuando = null;
+      document.querySelectorAll('.opt').forEach(b => b.setAttribute('aria-pressed', 'false'));
+      ['q-nombre', 'q-localidad', 'q-telefono', 'q-detalles'].forEach(id => { document.getElementById(id).value = ''; });
+      document.getElementById('q-privacy').checked = false;
+      document.getElementById('q-marketing').checked = false;
+      document.querySelectorAll('[data-err]').forEach(e => e.classList.add('hidden'));
+      document.getElementById('quizProgressWrap').classList.remove('hidden');
+      document.getElementById('quizNav').classList.remove('hidden');
+      current = 0;
+      showStep(0);
+      document.getElementById('cuestionario').scrollIntoView({ behavior: 'smooth' });
+    }
+    document.getElementById('quiz-restart').addEventListener('click', resetQuiz);
 
     // Evitar envío del form con Enter
     document.getElementById('quizForm').addEventListener('submit', e => e.preventDefault());
