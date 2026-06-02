@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pesos de fuente usados en el HTML (font-400..font-800).
+   El Play CDN los aceptaba; con el build estático los definimos explícitamente. */
+@layer utilities {
+  .font-400 { font-weight: 400; }
+  .font-500 { font-weight: 500; }
+  .font-600 { font-weight: 600; }
+  .font-700 { font-weight: 700; }
+  .font-800 { font-weight: 800; }
+}
