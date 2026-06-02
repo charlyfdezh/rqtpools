@@ -185,6 +185,60 @@ test.describe('Cuestionario - envío', () => {
   });
 });
 
+test.describe('Seguridad', () => {
+  test('la home declara Content-Security-Policy con frame-ancestors none', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const csp = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');
+    expect(csp).toBeTruthy();
+    expect(csp).toContain("frame-ancestors 'none'");
+    expect(csp).toContain("object-src 'none'");
+  });
+
+  test('los recursos de Phosphor (unpkg) usan integridad SRI', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const links = page.locator('link[href*="unpkg.com"]');
+    const count = await links.count();
+    expect(count).toBeGreaterThan(0);
+    for (let i = 0; i < count; i++) {
+      const integrity = await links.nth(i).getAttribute('integrity');
+      expect(integrity).toMatch(/^sha384-/);
+    }
+  });
+
+  test('existe el campo honeypot oculto y no es visible para el usuario', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const honeypot = page.locator('#q-website');
+    await expect(honeypot).toHaveCount(1);
+    await expect(honeypot).toBeHidden();
+  });
+
+  test('HONEYPOT: si un bot rellena el campo trampa, el envío se bloquea', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await stubWindowOpen(page);
+    await page.goto('/');
+    await goToStep4(page);
+    await fillStep4(page);
+    // Simula un bot rellenando el campo oculto
+    await page.evaluate(() => { document.getElementById('q-website').value = 'http://bot.example'; });
+    await page.click('#send-wa');
+    // No debe avanzar a la confirmación
+    await expect(page.locator('.quiz-step[data-step="done"]')).toBeHidden();
+    const opened = await page.evaluate(() => window.__lastOpen);
+    expect(opened).toBeFalsy();
+  });
+
+  test('las páginas legales también declaran CSP', async ({ page }) => {
+    for (const path of ['/aviso-legal.html', '/politica-privacidad.html', '/politica-cookies.html']) {
+      await page.goto(path);
+      const csp = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');
+      expect(csp, 'CSP en ' + path).toContain("frame-ancestors 'none'");
+    }
+  });
+});
+
 test.describe('Páginas legales', () => {
   test('los enlaces del footer llevan a las páginas legales', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);

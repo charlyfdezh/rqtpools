@@ -40,6 +40,10 @@
   function validateLead(lead) {
     lead = lead || {};
     var errors = {};
+    // Honeypot: si viene relleno, es un bot. Marcamos como spam (silencioso).
+    if (lead.website && String(lead.website).trim()) {
+      return { valid: false, errors: { spam: true }, spam: true };
+    }
     if (!lead.nombre || !String(lead.nombre).trim()) errors.nombre = true;
     if (!lead.localidad || !String(lead.localidad).trim()) errors.localidad = true;
     if (!lead.telefono || !String(lead.telefono).trim()) errors.telefono = true;

@@ -4,12 +4,14 @@
   "private": true,
   "description": "Web de RQT Pools - mantenimiento de piscinas en Madrid",
   "scripts": {
+    "build:css": "tailwindcss -c tailwind.config.js -i assets/tailwind-input.css -o assets/styles.css --minify",
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test": "vitest run && playwright test"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
+    "tailwindcss": "^3.4.17",
     "vitest": "^2.1.8"
   }
 }

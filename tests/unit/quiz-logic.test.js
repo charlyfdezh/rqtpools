@@ -84,6 +84,19 @@ describe('validateLead', () => {
     expect(r.valid).toBe(true);
     expect(r.errors.email).toBeUndefined();
   });
+
+  it('HONEYPOT: si el campo trampa "website" viene relleno, se marca como spam y no es válido', () => {
+    const r = QuizLogic.validateLead({ ...base, website: 'http://spam-bot.example' });
+    expect(r.valid).toBe(false);
+    expect(r.spam).toBe(true);
+    expect(r.errors.spam).toBe(true);
+  });
+
+  it('HONEYPOT: vacío no afecta a un lead válido', () => {
+    const r = QuizLogic.validateLead({ ...base, website: '' });
+    expect(r.valid).toBe(true);
+    expect(r.spam).toBeUndefined();
+  });
 });
 
 describe('normalizeLead', () => {

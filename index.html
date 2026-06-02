@@ -3,6 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- ===== Seguridad (cabeceras vía meta) ===== -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net https://unpkg.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formspree.io; form-action 'self' https://formspree.io https://wa.me mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <!-- ===== SEO Primario ===== -->
   <title>Mantenimiento de Piscinas en Madrid | RQT Pools</title>
   <meta name="description" content="Mantenimiento de piscinas en Madrid: cambio de lecho filtrante, instalación de filtros, lonas y cubiertas. Presupuesto sin compromiso. Llama al 678 13 70 51." />
@@ -43,33 +48,12 @@
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
   <link href="https://fonts.bunny.net/css?family=outfit:400,500,600,700,800|manrope:400,500,600,700&display=swap" rel="stylesheet" />
 
-  <!-- Iconos: Phosphor (libreria, sin SVG hechos a mano) -->
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+  <!-- Iconos: Phosphor (con SRI para verificar integridad del recurso) -->
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" integrity="sha384-6p9AefaqUhEVheRlj1mpAkbngHXy9mbYMrIdcIt4Jlc9lOLIablJq3bBsLOjGwZ7" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" integrity="sha384-pPVoXE8ft+zxKtxIDDI7SfTK6y95NHm4qa+hKEg/hs8VkjW5IP+9/dGOPCbDpUPl" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <!-- Tailwind Play CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            ink:       '#102A43',
-            brand:     '#00A3C4',
-            brandDeep: '#0086a3',
-            tint:      '#e6f7fb',
-            page:      '#f5fbfc',
-            line:      '#d6e6ea',
-            muted:     '#465c66'
-          },
-          fontFamily: {
-            display: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-            sans:    ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif']
-          }
-        }
-      }
-    }
-  </script>
+  <!-- Tailwind compilado estáticamente (sin CDN: CSP estricta, sin unsafe-eval) -->
+  <link rel="stylesheet" href="assets/styles.css" />
 
   <style>
     html { scroll-behavior: smooth; }
@@ -518,6 +502,12 @@
                   <textarea id="q-detalles" rows="3" class="w-full resize-none rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Tamaño de la piscina, problema, fotos que quieras comentar..."></textarea>
                 </div>
 
+                <!-- Honeypot anti-bots: oculto a humanos, los bots tienden a rellenarlo -->
+                <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;height:0;width:0;overflow:hidden;">
+                  <label for="q-website">No rellenar este campo</label>
+                  <input type="text" id="q-website" name="website" tabindex="-1" autocomplete="off" />
+                </div>
+
                 <!-- Consentimientos RGPD -->
                 <div class="space-y-2 rounded-xl border border-line bg-page p-4">
                   <label class="flex items-start gap-2.5 text-sm text-ink">
@@ -802,7 +792,8 @@
         tipo:      answers.tipo,
         cuando:    answers.cuando,
         marketing: document.getElementById('q-marketing').checked,
-        privacy:   document.getElementById('q-privacy').checked
+        privacy:   document.getElementById('q-privacy').checked,
+        website:   document.getElementById('q-website').value
       };
     }
 
