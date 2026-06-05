@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===== Seguridad (cabeceras vía meta) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net https://unpkg.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://formspree.io https://caudal-five.vercel.app; form-action 'self' https://formspree.io https://wa.me mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net https://unpkg.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://caudal-five.vercel.app; form-action 'self' https://wa.me mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- ===== SEO Primario ===== -->
@@ -812,32 +812,8 @@
       return result.valid;
     }
 
-    // ============================================================
-    //  FORMSPREE - Guardado de leads en base de datos
-    //  1) Crea una cuenta gratis en https://formspree.io
-    //  2) Crea un formulario y copia su endpoint (ej: https://formspree.io/f/abcdwxyz)
-    //  3) Pega ese endpoint aquí abajo sustituyendo TU_ID_AQUI
-    //  Mientras no lo configures, la web funciona igual (solo no guarda el lead).
-    // ============================================================
-    const FORMSPREE_ENDPOINT = 'https://formspree.io/f/mjgzzany';
-
     function buildMessage() {
       return QuizLogic.buildMessage(readForm());
-    }
-
-    // Guarda el lead en Formspree (no bloquea la apertura de WhatsApp/correo)
-    function saveLead(canal) {
-      if (!QuizLogic.isFormspreeConfigured(FORMSPREE_ENDPOINT)) return; // aún sin configurar
-      const data = QuizLogic.buildLeadPayload(readForm(), canal);
-      data.fecha = new Date().toLocaleString('es-ES');
-      try {
-        fetch(FORMSPREE_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify(data),
-          keepalive: true
-        }).catch(function () {});
-      } catch (e) {}
     }
 
     // ============================================================
@@ -871,7 +847,6 @@
 
     document.getElementById('send-wa').addEventListener('click', () => {
       if (!validate()) return;
-      saveLead('WhatsApp');
       saveToCaudal('WhatsApp');
       const msg = encodeURIComponent(buildMessage());
       window.open('https://wa.me/34678137051?text=' + msg, '_blank');
@@ -880,7 +855,6 @@
 
     document.getElementById('send-email').addEventListener('click', () => {
       if (!validate()) return;
-      saveLead('Correo');
       saveToCaudal('Correo');
       const subject = encodeURIComponent('Solicitud de presupuesto - RQT Pools');
       const body = encodeURIComponent(buildMessage());
