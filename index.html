@@ -493,9 +493,9 @@
                   <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="telefono">Indica un teléfono de contacto.</p>
                 </div>
                 <div>
-                  <label for="q-email" class="mb-1.5 block text-sm font-600">Correo <span class="font-400 text-muted">(opcional)</span></label>
+                  <label for="q-email" class="mb-1.5 block text-sm font-600">Correo</label>
                   <input id="q-email" type="email" autocomplete="email" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="tucorreo@ejemplo.com" />
-                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="email">Revisa el formato del correo.</p>
+                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="email">Introduce un correo válido.</p>
                 </div>
                 <div>
                   <label for="q-detalles" class="mb-1.5 block text-sm font-600">Detalles <span class="font-400 text-muted">(opcional)</span></label>
@@ -805,11 +805,15 @@
 
     // Validación paso 4 (delega las reglas en QuizLogic)
     function validate() {
-      const result = QuizLogic.validateLead(readForm());
+      const lead = readForm();
+      const result = QuizLogic.validateLead(lead);
+      const errors = Object.assign({}, result.errors);
+      // Email obligatorio (necesario para la autorespuesta y el CRM).
+      if (!lead.email || !String(lead.email).trim()) errors.email = true;
       ['nombre', 'localidad', 'telefono', 'email', 'privacy'].forEach(function (campo) {
-        toggleError(campo, !!result.errors[campo]);
+        toggleError(campo, !!errors[campo]);
       });
-      return result.valid;
+      return result.valid && !errors.email;
     }
 
     function buildMessage() {
@@ -838,7 +842,8 @@
             email: f.email || '',
             phone: f.telefono || '',
             description: QuizLogic.buildMessage(f) + '\n\nCanal: ' + (canal || '-'),
-            source: 'rqtpools.com'
+            source: 'rqtpools.com',
+            website: f.website || ''
           }),
           keepalive: true
         }).catch(function () {});
