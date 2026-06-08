@@ -23,16 +23,15 @@
   <meta property="og:title" content="Mantenimiento de Piscinas en Madrid | RQT Pools" />
   <meta property="og:description" content="Mantenimiento de piscinas en Madrid: cambio de lecho filtrante, instalación de filtros y lonas. Presupuesto gratis." />
   <meta property="og:url" content="https://rqtpools.com/" />
-  <meta property="og:image" content="https://rqtpools.com/og-image.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
+  <meta property="og:image" content="https://rqtpools.com/assets/logoFINAL.png" />
   <meta property="og:image:alt" content="RQT Pools - Mantenimiento de piscinas en Madrid" />
+  <meta property="og:logo" content="https://rqtpools.com/assets/logoFINAL.png" />
 
   <!-- ===== Twitter Card ===== -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="Mantenimiento de Piscinas en Madrid | RQT Pools" />
   <meta name="twitter:description" content="Mantenimiento de piscinas en Madrid: filtros, lonas y reparaciones. Presupuesto gratis. 678 13 70 51." />
-  <meta name="twitter:image" content="https://rqtpools.com/og-image.jpg" />
+  <meta name="twitter:image" content="https://rqtpools.com/assets/logoFINAL.png" />
 
   <!-- ===== Geo + Theme ===== -->
   <meta name="geo.region" content="ES-M" />
@@ -41,8 +40,9 @@
   <meta name="ICBM" content="40.4168, -3.7038" />
   <meta name="theme-color" content="#102A43" />
 
-  <!-- ===== Favicon SVG inline (sin archivo extra) ===== -->
-  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%23102A43"/><text x="50" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="36" fill="white">RQT</text><path d="M14 76 Q 35 64, 50 76 T 86 76" stroke="%2300A3C4" stroke-width="6" fill="none" stroke-linecap="round"/></svg>' />
+  <!-- ===== Favicon (logo real PNG para Google + apple-touch) ===== -->
+  <link rel="icon" type="image/png" href="assets/logoFINAL.png" />
+  <link rel="apple-touch-icon" href="assets/logoFINAL.png" />
 
   <!-- Fuentes via Bunny Fonts (drop-in replacement de Google Fonts, sin tracking, RGPD-friendly) -->
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
@@ -88,6 +88,18 @@
     }
   </style>
 
+  <!-- ===== JSON-LD: WebSite (refuerza el nombre "RQT Pools" en Google) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "RQT Pools",
+    "alternateName": "RQT Pools - Mantenimiento de Piscinas en Madrid",
+    "url": "https://rqtpools.com/",
+    "publisher": { "@id": "https://rqtpools.com/#business" }
+  }
+  </script>
+
   <!-- ===== JSON-LD: LocalBusiness ===== -->
   <script type="application/ld+json">
   {
@@ -95,7 +107,8 @@
     "@type": "LocalBusiness",
     "@id": "https://rqtpools.com/#business",
     "name": "RQT Pools",
-    "image": "https://rqtpools.com/og-image.jpg",
+    "logo": "https://rqtpools.com/assets/logoFINAL.png",
+    "image": "https://rqtpools.com/assets/logoFINAL.png",
     "url": "https://rqtpools.com",
     "telephone": "+34678137051",
     "priceRange": "€€",
@@ -493,7 +506,7 @@
                   <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="telefono">Indica un teléfono de contacto.</p>
                 </div>
                 <div>
-                  <label for="q-email" class="mb-1.5 block text-sm font-600">Correo</label>
+                  <label for="q-email" class="mb-1.5 block text-sm font-600">Correo <span class="text-brand">*</span></label>
                   <input id="q-email" type="email" autocomplete="email" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="tucorreo@ejemplo.com" />
                   <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="email">Introduce un correo válido.</p>
                 </div>
@@ -661,11 +674,7 @@
     <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-4">
       <div class="lg:col-span-2">
         <a href="#inicio" class="flex items-center" aria-label="RQT Pools - Inicio">
-          <svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg" class="h-11 w-auto text-white" aria-hidden="true">
-            <text x="0" y="34" font-family="'Outfit',sans-serif" font-weight="800" font-size="34" letter-spacing="-1" fill="currentColor">RQT</text>
-            <path d="M2 43 C 14 36, 28 48, 42 42 C 54 37, 62 45, 72 42" stroke="#00A3C4" stroke-width="3" fill="none" stroke-linecap="round" />
-            <text x="86" y="34" font-family="'Outfit',sans-serif" font-weight="700" font-size="22" letter-spacing="1" fill="#00A3C4">Pools</text>
-          </svg>
+          <img src="assets/logoFINAL.png" alt="RQT Pools" class="h-16 w-auto rounded-lg" width="180" height="96" />
         </a>
         <p class="mt-4 max-w-sm text-sm text-white/65">Mantenimiento, tratamiento del agua y reparación de piscinas en Madrid para particulares, comunidades y negocios.</p>
       </div>

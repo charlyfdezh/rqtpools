@@ -15,8 +15,9 @@ async function stubWindowOpen(page) {
   });
 }
 
-// Rellena el paso 4 con datos válidos (email opcional configurable)
-async function fillStep4(page, { email = '' } = {}) {
+// Rellena el paso 4 con datos válidos. Email obligatorio: por defecto pone uno válido.
+// Pasa email:null para dejarlo vacío a propósito (tests de validación).
+async function fillStep4(page, { email = 'laura@correo.com' } = {}) {
   await page.fill('#q-nombre', 'Laura Giménez');
   await page.fill('#q-localidad', 'Pozuelo');
   await page.fill('#q-telefono', '600112233');
@@ -47,6 +48,25 @@ test.describe('Carga y estructura', () => {
     await expect(page.locator('header svg').first()).toBeVisible();
     await expect(page.locator('header a[href="#servicios"]').first()).toBeVisible();
     await expect(page.locator('header a[href="#cuestionario"]').first()).toBeVisible();
+  });
+
+  test('el logo del footer carga (imagen con alt RQT Pools)', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const logo = page.locator('footer img[alt="RQT Pools"]');
+    await expect(logo).toHaveCount(1);
+    await logo.scrollIntoViewIfNeeded();
+    // La imagen debe cargar de verdad (naturalWidth > 0)
+    await expect.poll(async () => logo.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+  });
+
+  test('existe el schema WebSite con el nombre RQT Pools', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+    const website = blocks.map((b) => JSON.parse(b)).find((j) => j['@type'] === 'WebSite');
+    expect(website).toBeTruthy();
+    expect(website.name).toBe('RQT Pools');
   });
 
   test('el icono del jacuzzi usa una clase válida de Phosphor (ph-bathtub)', async ({ page }) => {
@@ -125,7 +145,18 @@ test.describe('Cuestionario - validación', () => {
     await expect(page.locator('.quiz-step[data-step="done"]')).toBeHidden();
   });
 
-  test('email OPCIONAL: con formato inválido muestra error; corregido, continúa', async ({ page }) => {
+  test('email OBLIGATORIO: vacío muestra error y no avanza', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await stubWindowOpen(page);
+    await page.goto('/');
+    await goToStep4(page);
+    await fillStep4(page, { email: null }); // sin email a propósito
+    await page.click('#send-wa');
+    await expect(page.locator('[data-err="email"]')).toBeVisible();
+    await expect(page.locator('.quiz-step[data-step="done"]')).toBeHidden();
+  });
+
+  test('email OBLIGATORIO: formato inválido muestra error; corregido, continúa', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);
     await stubWindowOpen(page);
     await page.goto('/');
@@ -136,16 +167,6 @@ test.describe('Cuestionario - validación', () => {
     await expect(page.locator('.quiz-step[data-step="done"]')).toBeHidden();
     // Corregimos el email
     await page.fill('#q-email', 'cliente@correo.com');
-    await page.click('#send-wa');
-    await expect(page.locator('.quiz-step[data-step="done"]')).toBeVisible();
-  });
-
-  test('email OPCIONAL: vacío permite enviar', async ({ page }) => {
-    await dismissCookiesBeforeLoad(page);
-    await stubWindowOpen(page);
-    await page.goto('/');
-    await goToStep4(page);
-    await fillStep4(page); // sin email
     await page.click('#send-wa');
     await expect(page.locator('.quiz-step[data-step="done"]')).toBeVisible();
   });
