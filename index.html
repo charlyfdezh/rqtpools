@@ -40,9 +40,8 @@
   <meta name="ICBM" content="40.4168, -3.7038" />
   <meta name="theme-color" content="#102A43" />
 
-  <!-- ===== Favicon (logo real PNG para Google + apple-touch) ===== -->
-  <link rel="icon" type="image/png" href="assets/logoFINAL.png" />
-  <link rel="apple-touch-icon" href="assets/logoFINAL.png" />
+  <!-- ===== Favicon SVG inline (cuadrado, se lee bien en tamaño pequeño) ===== -->
+  <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%23102A43"/><text x="50" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="36" fill="white">RQT</text><path d="M14 76 Q 35 64, 50 76 T 86 76" stroke="%2300A3C4" stroke-width="6" fill="none" stroke-linecap="round"/></svg>' />
 
   <!-- Fuentes via Bunny Fonts (drop-in replacement de Google Fonts, sin tracking, RGPD-friendly) -->
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
@@ -675,7 +674,12 @@
     <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-4">
       <div class="lg:col-span-2">
         <a href="#inicio" class="flex items-center" aria-label="RQT Pools - Inicio">
-          <img src="assets/logoFINAL.png" alt="RQT Pools" class="h-16 w-auto rounded-lg" width="180" height="96" />
+          <svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg" class="h-11 w-auto" role="img" aria-label="RQT Pools">
+            <text x="0" y="34" font-family="'Outfit',sans-serif" font-weight="800" font-size="34" letter-spacing="-1" fill="#ffffff">RQT</text>
+            <path d="M2 41 C 14 34, 28 46, 42 40 C 54 35, 62 43, 72 40" stroke="#1a8fb8" stroke-width="3.2" fill="none" stroke-linecap="round" />
+            <path d="M4 46 C 16 39, 30 51, 44 45 C 56 40, 64 48, 73 45" stroke="#00c2d4" stroke-width="2.6" fill="none" stroke-linecap="round" opacity="0.9" />
+            <text x="86" y="34" font-family="'Outfit',sans-serif" font-weight="700" font-size="22" letter-spacing="1" fill="#00c2d4">Pools</text>
+          </svg>
         </a>
         <p class="mt-4 max-w-sm text-sm text-white/65">Mantenimiento, tratamiento del agua y reparación de piscinas en Madrid para particulares, comunidades y negocios.</p>
       </div>
