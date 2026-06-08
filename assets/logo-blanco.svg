@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 96" width="200" height="96" role="img" aria-label="RQT Pools">
-  <text x="100" y="50" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-weight="800" font-size="50" letter-spacing="-1" fill="currentColor">RQT</text>
+  <text x="100" y="50" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-weight="800" font-size="50" letter-spacing="-1" fill="#ffffff">RQT</text>
   <path d="M40 60 C 66 50, 92 72, 118 60 C 138 51, 152 66, 164 60" stroke="#1a8fb8" stroke-width="6" fill="none" stroke-linecap="round"/>
   <path d="M44 67 C 70 58, 96 78, 122 67 C 140 59, 152 71, 162 67" stroke="#00c2d4" stroke-width="5" fill="none" stroke-linecap="round" opacity="0.9"/>
-  <text x="100" y="88" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-weight="700" font-size="24" letter-spacing="1" fill="#00A3C4">Pools</text>
+  <text x="100" y="88" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-weight="700" font-size="24" letter-spacing="1" fill="#00c2d4">Pools</text>
 </svg>

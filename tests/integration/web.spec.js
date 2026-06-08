@@ -39,7 +39,7 @@ test.describe('Carga y estructura', () => {
   test('la home carga con el título correcto', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);
     await page.goto('/');
-    await expect(page).toHaveTitle(/Mantenimiento de Piscinas en Madrid \| RQT Pools/);
+    await expect(page).toHaveTitle(/Mantenimiento Integral de Piscinas en Madrid \| RQT Pools/);
   });
 
   test('el logo SVG y la navegación están presentes', async ({ page }) => {
