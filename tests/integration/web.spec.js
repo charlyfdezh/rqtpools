@@ -50,14 +50,13 @@ test.describe('Carga y estructura', () => {
     await expect(page.locator('header a[href="#cuestionario"]').first()).toBeVisible();
   });
 
-  test('el logo del footer carga (imagen con alt RQT Pools)', async ({ page }) => {
+  test('el logo del footer está presente (SVG con aria-label RQT Pools)', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);
     await page.goto('/');
-    const logo = page.locator('footer img[alt="RQT Pools"]');
+    const logo = page.locator('footer svg[aria-label="RQT Pools"]');
     await expect(logo).toHaveCount(1);
     await logo.scrollIntoViewIfNeeded();
-    // La imagen debe cargar de verdad (naturalWidth > 0)
-    await expect.poll(async () => logo.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+    await expect(logo).toBeVisible();
   });
 
   test('existe el schema WebSite con el nombre RQT Pools', async ({ page }) => {
