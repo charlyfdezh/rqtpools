@@ -87,6 +87,18 @@
     }
   </style>
 
+  <!-- ===== JSON-LD: Organization (nombre + logo del sitio para Google) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://rqtpools.com/#organization",
+    "name": "RQT Pools",
+    "url": "https://rqtpools.com/",
+    "logo": "https://rqtpools.com/assets/logoFINAL.png"
+  }
+  </script>
+
   <!-- ===== JSON-LD: WebSite (refuerza el nombre "RQT Pools" en Google) ===== -->
   <script type="application/ld+json">
   {
@@ -95,7 +107,7 @@
     "name": "RQT Pools",
     "alternateName": "RQT Pools - Mantenimiento de Piscinas en Madrid",
     "url": "https://rqtpools.com/",
-    "publisher": { "@id": "https://rqtpools.com/#business" }
+    "publisher": { "@id": "https://rqtpools.com/#organization" }
   }
   </script>
 
