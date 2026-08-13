@@ -58,6 +58,7 @@
     html { scroll-behavior: smooth; }
     body { font-family: 'Manrope', sans-serif; }
     .font-display { font-family: 'Outfit', sans-serif; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 
     /* Sistema de radios: botones = pildora, tarjetas = 1.25rem, inputs = 0.75rem */
     /* Revelado al hacer scroll (IntersectionObserver) */
@@ -255,7 +256,7 @@
             <i class="ph-fill ph-map-pin"></i> Mantenimiento de piscinas en Madrid
           </p>
           <h1 class="font-display text-4xl font-800 leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
-            El agua perfecta,<br class="hidden sm:block" /> sin complicaciones.
+            <span class="sr-only">RQT Pools — </span>El agua perfecta,<br class="hidden sm:block" /> sin complicaciones.
           </h1>
           <p class="mt-5 max-w-[34ch] text-lg leading-relaxed text-muted">
             Mantenimiento, tratamiento del agua y reparación de piscinas en Madrid. Presupuesto sin compromiso en menos de un minuto.
