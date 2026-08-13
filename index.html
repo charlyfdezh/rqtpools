@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===== Seguridad (cabeceras vía meta) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net https://unpkg.com; img-src 'self' data: https://images.unsplash.com; connect-src 'self' https://caudal-five.vercel.app; form-action 'self' https://wa.me mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net https://unpkg.com; img-src 'self' data:; connect-src 'self' https://caudal-five.vercel.app; form-action 'self' https://wa.me mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- ===== SEO Primario ===== -->
@@ -43,9 +43,8 @@
   <!-- ===== Favicon SVG inline (cuadrado, se lee bien en tamaño pequeño) ===== -->
   <link rel="icon" type="image/svg+xml" href='data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" rx="22" fill="%23102A43"/><text x="50" y="58" text-anchor="middle" font-family="Arial,sans-serif" font-weight="900" font-size="36" fill="white">RQT</text><path d="M14 76 Q 35 64, 50 76 T 86 76" stroke="%2300A3C4" stroke-width="6" fill="none" stroke-linecap="round"/></svg>' />
 
-  <!-- Preconnect + preload de la imagen LCP del hero (acelera el renderizado inicial en móvil) -->
-  <link rel="preconnect" href="https://images.unsplash.com" />
-  <link rel="preload" as="image" fetchpriority="high" href="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1100&q=75" />
+  <!-- Preload de la imagen LCP del hero (ahora auto-alojada, acelera el renderizado inicial en móvil) -->
+  <link rel="preload" as="image" fetchpriority="high" href="assets/img/hero.webp" />
 
   <!-- Fuentes via Bunny Fonts (drop-in replacement de Google Fonts, sin tracking, RGPD-friendly) -->
   <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
@@ -283,7 +282,7 @@
         <div class="reveal lg:col-span-6">
           <div class="relative overflow-hidden rounded-[1.75rem] border border-white/60 shadow-2xl shadow-brand/10">
             <img
-              src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=1100&q=75"
+              src="assets/img/hero.webp"
               alt="Piscina con mantenimiento profesional de RQT Pools - servicio integral de piscinas en España"
               class="h-[340px] w-full object-cover sm:h-[460px] lg:h-[560px]" loading="eager" fetchpriority="high" />
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-2xl bg-white/85 px-5 py-3.5 backdrop-blur-md">
@@ -310,7 +309,7 @@
 
         <!-- A: Mantenimiento integral - IMAGEN GRANDE -->
         <article class="group relative col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2 lg:row-span-2">
-          <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=75"
+          <img src="assets/img/servicio-particular.webp"
                alt="Mantenimiento integral de piscina particular con agua cristalina" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent"></div>
           <div class="relative flex h-full flex-col justify-end p-6">
@@ -364,7 +363,7 @@
 
         <!-- H: Comunidades y hoteles - IMAGEN -->
         <article class="group relative col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2">
-          <img src="https://images.unsplash.com/photo-1568084680786-a84f91d1153c?auto=format&fit=crop&w=900&q=75"
+          <img src="assets/img/servicio-comunidad.webp"
                alt="Mantenimiento de piscinas para comunidades de vecinos y hoteles" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent"></div>
           <div class="relative flex h-full flex-col justify-end p-6">
@@ -416,7 +415,7 @@
     <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div class="reveal order-2 overflow-hidden rounded-[1.5rem] border border-line shadow-xl shadow-brand/5 lg:order-1">
-          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1000&q=75"
+          <img src="assets/img/tecnicos.webp"
                alt="Piscina cuidada por técnicos profesionales de mantenimiento de piscinas RQT Pools" class="h-[300px] w-full object-cover sm:h-[420px]" loading="lazy" />
         </div>
         <div class="reveal order-1 lg:order-2">
@@ -667,7 +666,7 @@
 
     <!-- ========================= CTA BAND ========================= -->
     <section class="relative overflow-hidden">
-      <img src="https://images.unsplash.com/photo-1572331165267-854da2b10ccc?auto=format&fit=crop&w=1600&q=75"
+      <img src="assets/img/cta-atardecer.webp"
            alt="Piscina con mantenimiento profesional al atardecer" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
       <div class="absolute inset-0 bg-brandDeep/85"></div>
       <div class="relative mx-auto max-w-7xl px-5 py-16 text-center sm:px-8 lg:py-24">
