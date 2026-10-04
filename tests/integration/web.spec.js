@@ -357,3 +357,25 @@ test.describe('Páginas de servicio (SEO)', () => {
     expect(llms).toContain('# RQT Pools');
   });
 });
+
+test.describe('Nombre del sitio e icono en Google', () => {
+  test('WebSite se llama "RQT Pools" y no usa el dominio como nombre alternativo', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+    const website = blocks.map((b) => JSON.parse(b)).find((j) => j['@type'] === 'WebSite');
+    expect(website.name).toBe('RQT Pools');
+    expect(JSON.stringify(website.alternateName)).not.toContain('.com');
+  });
+
+  test('el favicon es un archivo real (no data:) y se sirve correctamente', async ({ page, request }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const hrefs = await page.locator('link[rel="icon"]').evaluateAll((ls) => ls.map((l) => l.getAttribute('href')));
+    expect(hrefs).toContain('/favicon.ico');
+    for (const h of hrefs) {
+      expect(h.startsWith('data:')).toBe(false);
+      expect((await request.get(h)).ok(), h).toBe(true);
+    }
+  });
+});
