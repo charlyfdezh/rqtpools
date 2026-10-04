@@ -10,6 +10,15 @@
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email == null ? '' : email).trim());
   }
 
+  // Valida un teléfono: admite espacios, guiones, puntos, paréntesis y prefijo +.
+  // Debe tener entre 9 y 15 cifras (9 = número español sin prefijo).
+  function isValidPhone(phone) {
+    var raw = String(phone == null ? '' : phone).trim();
+    if (!/^\+?[\d\s().-]+$/.test(raw)) return false;
+    var digits = raw.replace(/\D/g, '');
+    return digits.length >= 9 && digits.length <= 15;
+  }
+
   // Comprueba si el endpoint de Formspree está configurado de verdad
   function isFormspreeConfigured(endpoint) {
     return typeof endpoint === 'string'
@@ -34,9 +43,10 @@
   }
 
   // Reglas de validación del formulario:
-  //  - nombre, localidad y telefono: OBLIGATORIOS
+  //  - nombre y localidad: OBLIGATORIOS
+  //  - telefono: OBLIGATORIO y con formato válido (9-15 cifras)
+  //  - email: OBLIGATORIO y con formato válido (necesario para la autorespuesta y el CRM)
   //  - privacidad: OBLIGATORIA (checkbox marcado)
-  //  - email: OPCIONAL, pero si se rellena debe tener formato válido
   function validateLead(lead) {
     lead = lead || {};
     var errors = {};
@@ -46,9 +56,9 @@
     }
     if (!lead.nombre || !String(lead.nombre).trim()) errors.nombre = true;
     if (!lead.localidad || !String(lead.localidad).trim()) errors.localidad = true;
-    if (!lead.telefono || !String(lead.telefono).trim()) errors.telefono = true;
+    if (!isValidPhone(lead.telefono)) errors.telefono = true;
+    if (!isValidEmail(lead.email)) errors.email = true;
     if (!lead.privacy) errors.privacy = true;
-    if (lead.email && String(lead.email).trim() && !isValidEmail(lead.email)) errors.email = true;
     return { valid: Object.keys(errors).length === 0, errors: errors };
   }
 
@@ -98,6 +108,7 @@
 
   var QuizLogic = {
     isValidEmail: isValidEmail,
+    isValidPhone: isValidPhone,
     isFormspreeConfigured: isFormspreeConfigured,
     normalizeLead: normalizeLead,
     validateLead: validateLead,

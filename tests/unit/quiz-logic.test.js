@@ -14,6 +14,22 @@ describe('isValidEmail', () => {
   });
 });
 
+describe('isValidPhone', () => {
+  it('acepta móviles y fijos españoles con o sin prefijo y separadores', () => {
+    expect(QuizLogic.isValidPhone('600112233')).toBe(true);
+    expect(QuizLogic.isValidPhone('600 11 22 33')).toBe(true);
+    expect(QuizLogic.isValidPhone('+34 678 13 70 51')).toBe(true);
+    expect(QuizLogic.isValidPhone('91-123-45-67')).toBe(true);
+  });
+  it('rechaza textos, números cortos y vacíos', () => {
+    expect(QuizLogic.isValidPhone('a')).toBe(false);
+    expect(QuizLogic.isValidPhone('600')).toBe(false);
+    expect(QuizLogic.isValidPhone('6001122ab')).toBe(false);
+    expect(QuizLogic.isValidPhone('')).toBe(false);
+    expect(QuizLogic.isValidPhone(null)).toBe(false);
+  });
+});
+
 describe('isFormspreeConfigured', () => {
   it('es false con el placeholder', () => {
     expect(QuizLogic.isFormspreeConfigured('https://formspree.io/f/TU_ID_AQUI')).toBe(false);
@@ -33,7 +49,7 @@ describe('validateLead', () => {
     nombre: 'Laura',
     localidad: 'Madrid',
     telefono: '600112233',
-    email: '',
+    email: 'laura@correo.com',
     privacy: true
   };
 
@@ -67,10 +83,16 @@ describe('validateLead', () => {
     expect(r.errors.privacy).toBe(true);
   });
 
-  it('EMAIL es opcional: vacío es válido', () => {
+  it('TELEFONO: con formato incorrecto, falla', () => {
+    const r = QuizLogic.validateLead({ ...base, telefono: '123' });
+    expect(r.valid).toBe(false);
+    expect(r.errors.telefono).toBe(true);
+  });
+
+  it('EMAIL es obligatorio: vacío falla', () => {
     const r = QuizLogic.validateLead({ ...base, email: '' });
-    expect(r.valid).toBe(true);
-    expect(r.errors.email).toBeUndefined();
+    expect(r.valid).toBe(false);
+    expect(r.errors.email).toBe(true);
   });
 
   it('EMAIL: si se rellena con formato incorrecto, falla', () => {

@@ -25,7 +25,7 @@ const types = {
 const server = http.createServer(async (req, res) => {
   try {
     let pathname = decodeURIComponent((req.url || '/').split('?')[0]);
-    if (pathname === '/') pathname = '/index.html';
+    if (pathname.endsWith('/')) pathname += 'index.html';
     // Evita salir de la raíz
     const safe = normalize(pathname).replace(/^(\.\.[/\\])+/, '');
     const file = join(root, safe);

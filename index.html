@@ -11,7 +11,6 @@
   <!-- ===== SEO Primario ===== -->
   <title>Mantenimiento Integral de Piscinas | RQT Pools</title>
   <meta name="description" content="Mantenimiento de piscinas en Madrid: cambio de lecho filtrante, instalación de filtros, lonas y cubiertas. Presupuesto sin compromiso. Llama al 678 13 70 51." />
-  <meta name="keywords" content="mantenimiento de piscinas Madrid, empresa mantenimiento piscinas Madrid, cambio de lecho filtrante, instalación de filtros, lonas para piscinas Madrid, cubiertas de piscina, limpieza de piscinas Madrid, tratamiento del agua, reparación de piscinas, depuradoras piscina Madrid" />
   <meta name="author" content="RQT Pools" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://rqtpools.com/" />
@@ -23,15 +22,16 @@
   <meta property="og:title" content="Mantenimiento Integral de Piscinas | RQT Pools" />
   <meta property="og:description" content="Mantenimiento de piscinas en Madrid: cambio de lecho filtrante, instalación de filtros y lonas. Presupuesto gratis." />
   <meta property="og:url" content="https://rqtpools.com/" />
-  <meta property="og:image" content="https://rqtpools.com/assets/logoFINAL.png" />
+  <meta property="og:image" content="https://rqtpools.com/assets/img/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="RQT Pools - Mantenimiento de piscinas en Madrid" />
-  <meta property="og:logo" content="https://rqtpools.com/assets/logoFINAL.png" />
 
   <!-- ===== Twitter Card ===== -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Mantenimiento Integral de Piscinas | RQT Pools" />
   <meta name="twitter:description" content="Mantenimiento de piscinas en Madrid: filtros, lonas y reparaciones. Presupuesto gratis. 678 13 70 51." />
-  <meta name="twitter:image" content="https://rqtpools.com/assets/logoFINAL.png" />
+  <meta name="twitter:image" content="https://rqtpools.com/assets/img/og.jpg" />
 
   <!-- ===== Geo + Theme ===== -->
   <meta name="geo.region" content="ES-M" />
@@ -91,43 +91,26 @@
     }
   </style>
 
-  <!-- ===== JSON-LD: Organization (nombre + logo del sitio para Google) ===== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://rqtpools.com/#organization",
-    "name": "RQT Pools",
-    "url": "https://rqtpools.com/",
-    "logo": "https://rqtpools.com/assets/logoFINAL.png"
-  }
-  </script>
-
-  <!-- ===== JSON-LD: WebSite (refuerza el nombre "RQT Pools" en Google) ===== -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "RQT Pools",
-    "alternateName": "RQT Pools - Mantenimiento de Piscinas en Madrid",
-    "url": "https://rqtpools.com/",
-    "publisher": { "@id": "https://rqtpools.com/#organization" }
-  }
-  </script>
-
-  <!-- ===== JSON-LD: LocalBusiness ===== -->
+  <!-- ===== JSON-LD: LocalBusiness (empresa, logo, contacto, zonas y servicios) ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": "https://rqtpools.com/#business",
     "name": "RQT Pools",
+    "alternateName": [
+      "rqtpools",
+      "RQTPools",
+      "RQT Pools Madrid",
+      "RQT Pools Mantenimiento de Piscinas"
+    ],
+    "description": "RQT Pools es una empresa de mantenimiento de piscinas en Madrid. Se encarga de la limpieza periódica, el tratamiento del agua, el cambio de lecho filtrante, la instalación de filtros y depuradoras, lonas y cubiertas, reparación de equipos, detección de fugas y apertura y cierre de temporada para particulares, comunidades de vecinos y hoteles.",
+    "url": "https://rqtpools.com/",
     "logo": "https://rqtpools.com/assets/logoFINAL.png",
-    "image": "https://rqtpools.com/assets/logoFINAL.png",
-    "url": "https://rqtpools.com",
+    "image": "https://rqtpools.com/assets/img/og.jpg",
     "telephone": "+34678137051",
+    "email": "hola@rqtpools.com",
     "priceRange": "€€",
-    "description": "Mantenimiento de piscinas en Madrid, cambio de lecho filtrante, instalación de filtros, lonas y cubiertas.",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Madrid",
@@ -139,32 +122,175 @@
       "latitude": "40.4168",
       "longitude": "-3.7038"
     },
-    "openingHoursSpecification": [{
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
-      "opens": "08:00",
-      "closes": "20:00"
-    }],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "08:00",
+        "closes": "20:00"
+      }
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "contactType": "customer service",
+        "telephone": "+34678137051",
+        "email": "hola@rqtpools.com",
+        "areaServed": "ES",
+        "availableLanguage": [
+          "es"
+        ]
+      }
+    ],
     "areaServed": [
-      { "@type": "City", "name": "Madrid" },
-      { "@type": "AdministrativeArea", "name": "Comunidad de Madrid" }
+      {
+        "@type": "City",
+        "name": "Madrid"
+      },
+      {
+        "@type": "City",
+        "name": "Pozuelo de Alarcón"
+      },
+      {
+        "@type": "City",
+        "name": "Las Rozas de Madrid"
+      },
+      {
+        "@type": "City",
+        "name": "Boadilla del Monte"
+      },
+      {
+        "@type": "City",
+        "name": "Majadahonda"
+      },
+      {
+        "@type": "City",
+        "name": "Alcobendas"
+      },
+      {
+        "@type": "AdministrativeArea",
+        "name": "Comunidad de Madrid"
+      }
+    ],
+    "knowsAbout": [
+      "Mantenimiento de piscinas",
+      "Tratamiento del agua de piscinas",
+      "Lecho filtrante",
+      "Filtros y depuradoras de piscina",
+      "Clorador salino",
+      "Lonas y cubiertas de piscina",
+      "Detección de fugas en piscinas",
+      "Invernaje de piscinas"
     ],
     "hasOfferCatalog": {
       "@type": "OfferCatalog",
       "name": "Servicios de piscinas",
       "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mantenimiento integral de piscinas" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cambio de lecho filtrante" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Instalación de filtros y depuradoras" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Lonas y cubiertas de piscina" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Tratamiento del agua" } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Detección y reparación de fugas" } }
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mantenimiento integral de piscinas",
+            "url": "https://rqtpools.com/servicios/mantenimiento-piscinas-madrid/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Tratamiento y equilibrio del agua",
+            "url": "https://rqtpools.com/servicios/tratamiento-agua-piscina/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Cambio de lecho filtrante",
+            "url": "https://rqtpools.com/servicios/cambio-lecho-filtrante/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Instalación de filtros y depuradoras",
+            "url": "https://rqtpools.com/servicios/instalacion-filtros-depuradoras/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Lonas y cubiertas de piscina",
+            "url": "https://rqtpools.com/servicios/lonas-cubiertas-piscina/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Reparación de equipos de piscina",
+            "url": "https://rqtpools.com/servicios/reparacion-equipos-piscina/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Detección y reparación de fugas",
+            "url": "https://rqtpools.com/servicios/deteccion-fugas-piscina/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Apertura y cierre de temporada (invernaje)",
+            "url": "https://rqtpools.com/servicios/apertura-cierre-temporada-piscina/"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Mantenimiento de piscinas para comunidades y hoteles",
+            "url": "https://rqtpools.com/servicios/mantenimiento-piscinas-comunidades/"
+          }
+        }
       ]
     }
   }
   </script>
 
-  <!-- ===== JSON-LD: FAQPage ===== -->
+  <!-- ===== JSON-LD: WebSite (refuerza el nombre "RQT Pools" en Google) ===== -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://rqtpools.com/#website",
+    "name": "RQT Pools",
+    "alternateName": [
+      "rqtpools",
+      "rqtpools.com",
+      "RQT Pools - Mantenimiento de Piscinas en Madrid"
+    ],
+    "url": "https://rqtpools.com/",
+    "inLanguage": "es-ES",
+    "publisher": {
+      "@id": "https://rqtpools.com/#business"
+    }
+  }
+  </script>
+
+  <!-- ===== JSON-LD: FAQPage (mismas preguntas que la sección visible) ===== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -173,32 +299,66 @@
       {
         "@type": "Question",
         "name": "¿Cada cuánto hay que mantener una piscina?",
-        "acceptedAnswer": { "@type": "Answer", "text": "En temporada de baño lo habitual es una visita semanal. Fuera de temporada basta con un mantenimiento más espaciado para conservar el agua en buen estado." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En temporada de baño lo habitual es una visita semanal. Fuera de temporada basta con un mantenimiento más espaciado para conservar el agua en buen estado."
+        }
       },
       {
         "@type": "Question",
         "name": "¿Cuándo hay que cambiar el lecho filtrante de la piscina?",
-        "acceptedAnswer": { "@type": "Answer", "text": "El lecho filtrante (arena, vidrio o cristal) suele cambiarse cada 4-6 años, dependiendo del uso de la piscina y de la calidad del agua. Lo revisamos sin compromiso." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El lecho filtrante (arena, vidrio o cristal) suele cambiarse cada 4-6 años, dependiendo del uso de la piscina y de la calidad del agua. Lo revisamos sin compromiso."
+        }
       },
       {
         "@type": "Question",
         "name": "¿Instaláis depuradoras y filtros nuevos?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí, instalamos bombas, depuradoras y sistemas de filtración nuevos, además de sustituir equipos antiguos por modelos más eficientes." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, instalamos bombas, depuradoras y sistemas de filtración nuevos, además de sustituir equipos antiguos por modelos más eficientes."
+        }
       },
       {
         "@type": "Question",
         "name": "¿Suministráis lonas y cubiertas para piscina?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Sí. Ofrecemos lonas de invierno, cubiertas de verano y mantas térmicas, hechas a medida e instaladas por nuestro equipo." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Ofrecemos lonas de invierno, cubiertas de verano y mantas térmicas, hechas a medida e instaladas por nuestro equipo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Trabajáis con comunidades y hoteles?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Ofrecemos contratos de mantenimiento para piscinas comunitarias y de uso público, cumpliendo la normativa sanitaria vigente."
+        }
       },
       {
         "@type": "Question",
         "name": "¿En qué zonas de Madrid trabajáis?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Damos servicio en Madrid capital y municipios de la Comunidad como Pozuelo, Las Rozas, Boadilla, Majadahonda, Alcobendas y alrededores." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Damos servicio en Madrid capital y municipios de la Comunidad como Pozuelo, Las Rozas, Boadilla, Majadahonda, Alcobendas y alrededores."
+        }
       },
       {
         "@type": "Question",
         "name": "¿Cuánto cuesta el mantenimiento de una piscina?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Depende del tamaño de la piscina y la frecuencia. Por eso te damos un presupuesto cerrado y sin compromiso tras conocer tu caso." }
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende del tamaño de la piscina y la frecuencia. Por eso te damos un presupuesto cerrado y sin compromiso tras conocer tu caso."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿En cuánto tiempo respondéis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Normalmente en 24-48h laborables. Si es urgente, márcalo en el cuestionario o escríbenos por WhatsApp."
+        }
       }
     ]
   }
@@ -222,7 +382,7 @@
       <div class="hidden items-center gap-8 lg:flex">
         <a href="#servicios"     class="text-sm font-600 text-muted transition hover:text-ink">Servicios</a>
         <a href="#proceso"       class="text-sm font-600 text-muted transition hover:text-ink">Cómo funciona</a>
-        <a href="#opiniones"     class="text-sm font-600 text-muted transition hover:text-ink">Opiniones</a>
+        <a href="#zonas"         class="text-sm font-600 text-muted transition hover:text-ink">Zonas</a>
         <a href="#faq"           class="text-sm font-600 text-muted transition hover:text-ink">Preguntas</a>
         <a href="tel:+34678137051" class="flex items-center gap-2 text-sm font-700 text-brandDeep">
           <i class="ph ph-phone-call text-[18px]"></i> 678 13 70 51
@@ -232,9 +392,14 @@
         </a>
       </div>
 
-      <button id="menuBtn" aria-label="Abrir menú" class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink lg:hidden">
-        <i class="ph ph-list text-[22px]"></i>
-      </button>
+      <div class="flex items-center gap-2 lg:hidden">
+        <a href="tel:+34678137051" aria-label="Llamar al 678 13 70 51" class="inline-flex h-10 items-center gap-2 rounded-full bg-brandDeep px-4 text-sm font-700 text-white shadow-sm transition active:scale-[.98]">
+          <i class="ph-fill ph-phone-call text-[18px]" aria-hidden="true"></i> Llamar
+        </a>
+        <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink">
+          <i class="ph ph-list text-[22px]" aria-hidden="true"></i>
+        </button>
+      </div>
     </nav>
 
     <!-- Menú móvil -->
@@ -242,7 +407,7 @@
       <div class="flex flex-col">
         <a href="#servicios" class="border-b border-line/60 py-3 font-600 text-muted">Servicios</a>
         <a href="#proceso"   class="border-b border-line/60 py-3 font-600 text-muted">Cómo funciona</a>
-        <a href="#opiniones" class="border-b border-line/60 py-3 font-600 text-muted">Opiniones</a>
+        <a href="#zonas"     class="border-b border-line/60 py-3 font-600 text-muted">Zonas</a>
         <a href="#faq"       class="border-b border-line/60 py-3 font-600 text-muted">Preguntas</a>
         <a href="#cuestionario" class="mt-4 rounded-full bg-brandDeep px-5 py-3 text-center font-700 text-white">Pedir presupuesto</a>
       </div>
@@ -254,9 +419,9 @@
     <!-- ========================= HERO ========================= -->
     <section class="water-wash">
       <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-12 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:pb-24 lg:pt-20">
-        <div class="reveal lg:col-span-6">
+        <div class="lg:col-span-6">
           <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-1.5 text-xs font-700 uppercase tracking-[0.14em] text-brandDeep">
-            <i class="ph-fill ph-map-pin"></i> Mantenimiento de piscinas en Madrid
+            <i class="ph-fill ph-map-pin" aria-hidden="true"></i> RQT Pools · Piscinas en Madrid
           </p>
           <h1 class="font-display text-4xl font-800 leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
             <span class="sr-only">RQT Pools — </span>El agua perfecta,<br class="hidden sm:block" /> sin complicaciones.
@@ -279,12 +444,12 @@
           </div>
         </div>
 
-        <div class="reveal lg:col-span-6">
+        <div class="lg:col-span-6">
           <div class="relative overflow-hidden rounded-[1.75rem] border border-white/60 shadow-2xl shadow-brand/10">
             <img
               src="assets/img/hero.webp"
-              alt="Piscina con mantenimiento profesional de RQT Pools - servicio integral de piscinas en España"
-              class="h-[340px] w-full object-cover sm:h-[460px] lg:h-[560px]" loading="eager" fetchpriority="high" />
+              alt="Piscina con mantenimiento profesional de RQT Pools - servicio integral de piscinas en Madrid"
+              width="1100" height="734" class="h-[340px] w-full object-cover sm:h-[460px] lg:h-[560px]" loading="eager" fetchpriority="high" />
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-2xl bg-white/85 px-5 py-3.5 backdrop-blur-md">
               <div>
                 <p class="font-display text-sm font-700">Agua cristalina todo el año</p>
@@ -308,75 +473,75 @@
       <div class="reveal grid auto-rows-[minmax(170px,1fr)] grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
         <!-- A: Mantenimiento integral - IMAGEN GRANDE -->
-        <article class="group relative col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2 lg:row-span-2">
+        <article class="group relative focus-within:ring-2 focus-within:ring-brand col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2 lg:row-span-2">
           <img src="assets/img/servicio-particular.webp"
                alt="Mantenimiento integral de piscina particular con agua cristalina" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent"></div>
           <div class="relative flex h-full flex-col justify-end p-6">
             <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white backdrop-blur-sm"><i class="ph-fill ph-broom text-[22px]"></i></span>
-            <h3 class="font-display text-xl font-700 text-white">Mantenimiento integral de piscinas</h3>
+            <h3 class="font-display text-xl font-700 text-white"><a href="servicios/mantenimiento-piscinas-madrid/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Mantenimiento integral de piscinas</a></h3>
             <p class="mt-1.5 max-w-sm text-sm text-white/85">Limpieza semanal del vaso, skimmers, fondo y línea de flotación. Revisión completa en cada visita.</p>
           </div>
         </article>
 
         <!-- B: Tratamiento del agua - AQUA TINT -->
-        <article class="col-span-1 rounded-[1.25rem] border border-brand/15 bg-tint p-6 sm:col-span-2">
+        <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand col-span-1 rounded-[1.25rem] border border-brand/15 bg-tint p-6 sm:col-span-2">
           <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-brand text-white"><i class="ph-fill ph-flask text-[22px]"></i></span>
-          <h3 class="font-display text-xl font-700">Tratamiento y equilibrio del agua</h3>
+          <h3 class="font-display text-xl font-700"><a href="servicios/tratamiento-agua-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Tratamiento y equilibrio del agua</a></h3>
           <p class="mt-1.5 text-sm text-muted">Análisis de pH, cloro y alcalinidad. Agua segura, transparente y sin algas.</p>
         </article>
 
         <!-- C: Cambio de lecho filtrante - BLANCO (SEO) -->
-        <article class="rounded-[1.25rem] border border-line bg-white p-6">
+        <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
           <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-arrows-clockwise text-[22px]"></i></span>
-          <h3 class="font-display text-lg font-700">Cambio de lecho filtrante</h3>
+          <h3 class="font-display text-lg font-700"><a href="servicios/cambio-lecho-filtrante/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Cambio de lecho filtrante</a></h3>
           <p class="mt-1.5 text-sm text-muted">Sustitución de arena, vidrio o cristal del filtro.</p>
         </article>
 
         <!-- D: Instalación de filtros - BLANCO (SEO) -->
-        <article class="rounded-[1.25rem] border border-line bg-white p-6">
+        <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
           <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-funnel text-[22px]"></i></span>
-          <h3 class="font-display text-lg font-700">Instalación de filtros</h3>
+          <h3 class="font-display text-lg font-700"><a href="servicios/instalacion-filtros-depuradoras/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Instalación de filtros</a></h3>
           <p class="mt-1.5 text-sm text-muted">Bombas, depuradoras y sistemas de filtración.</p>
         </article>
 
         <!-- E: Lonas y cubiertas - NAVY (SEO) -->
-        <article class="col-span-1 rounded-[1.25rem] bg-ink p-6 text-white sm:col-span-2">
+        <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand col-span-1 rounded-[1.25rem] bg-ink p-6 text-white sm:col-span-2">
           <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white"><i class="ph-fill ph-umbrella text-[22px]"></i></span>
-          <h3 class="font-display text-xl font-700">Lonas y cubiertas</h3>
+          <h3 class="font-display text-xl font-700"><a href="servicios/lonas-cubiertas-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Lonas y cubiertas</a></h3>
           <p class="mt-1.5 text-sm text-white/80">Lonas de invierno, cubiertas de verano y mantas térmicas a medida.</p>
         </article>
 
         <!-- F: Reparación de equipos - BLANCO -->
-        <article class="rounded-[1.25rem] border border-line bg-white p-6">
+        <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
           <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-wrench text-[22px]"></i></span>
-          <h3 class="font-display text-lg font-700">Reparación de equipos</h3>
+          <h3 class="font-display text-lg font-700"><a href="servicios/reparacion-equipos-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Reparación de equipos</a></h3>
           <p class="mt-1.5 text-sm text-muted">Bombas, depuradoras y clorador salino.</p>
         </article>
 
         <!-- G: Detección de fugas - BLANCO -->
-        <article class="rounded-[1.25rem] border border-line bg-white p-6">
+        <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
           <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-magnifying-glass text-[22px]"></i></span>
-          <h3 class="font-display text-lg font-700">Detección de fugas</h3>
+          <h3 class="font-display text-lg font-700"><a href="servicios/deteccion-fugas-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Detección de fugas</a></h3>
           <p class="mt-1.5 text-sm text-muted">Localizamos y reparamos pérdidas de agua.</p>
         </article>
 
         <!-- H: Comunidades y hoteles - IMAGEN -->
-        <article class="group relative col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2">
+        <article class="group relative focus-within:ring-2 focus-within:ring-brand col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2">
           <img src="assets/img/servicio-comunidad.webp"
                alt="Mantenimiento de piscinas para comunidades de vecinos y hoteles" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent"></div>
           <div class="relative flex h-full flex-col justify-end p-6">
             <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white backdrop-blur-sm"><i class="ph-fill ph-buildings text-[22px]"></i></span>
-            <h3 class="font-display text-xl font-700 text-white">Comunidades y hoteles</h3>
+            <h3 class="font-display text-xl font-700 text-white"><a href="servicios/mantenimiento-piscinas-comunidades/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Comunidades y hoteles</a></h3>
             <p class="mt-1.5 text-sm text-white/85">Contratos de mantenimiento para piscinas de uso público y comunitario.</p>
           </div>
         </article>
 
         <!-- I: Apertura y cierre - TEAL SOLIDO -->
-        <article class="col-span-1 rounded-[1.25rem] bg-brandDeep p-6 text-white sm:col-span-2">
+        <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand col-span-1 rounded-[1.25rem] bg-brandDeep p-6 text-white sm:col-span-2">
           <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white"><i class="ph-fill ph-sun text-[22px]"></i></span>
-          <h3 class="font-display text-xl font-700">Apertura y cierre de temporada</h3>
+          <h3 class="font-display text-xl font-700"><a href="servicios/apertura-cierre-temporada-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Apertura y cierre de temporada</a></h3>
           <p class="mt-1.5 text-sm text-white/85">Puesta a punto en primavera e invernaje en otoño. Tu piscina lista en cada estación.</p>
         </article>
 
@@ -436,8 +601,8 @@
               <p class="mt-1 text-sm text-muted">tiempo de respuesta</p>
             </div>
             <div class="rounded-2xl border border-line bg-white p-5">
-              <p class="font-display text-3xl font-800 text-brandDeep">4,9/5</p>
-              <p class="mt-1 text-sm text-muted">valoración de clientes</p>
+              <p class="font-display text-3xl font-800 text-brandDeep">Lun–Sáb</p>
+              <p class="mt-1 text-sm text-muted">de 8:00 a 20:00</p>
             </div>
           </div>
         </div>
@@ -508,23 +673,23 @@
               <div class="grid gap-4">
                 <div>
                   <label for="q-nombre" class="mb-1.5 block text-sm font-600">Nombre <span class="text-brand">*</span></label>
-                  <input id="q-nombre" type="text" autocomplete="name" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Tu nombre" />
-                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="nombre">Escribe tu nombre.</p>
+                  <input id="q-nombre" type="text" autocomplete="name" aria-describedby="err-nombre" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Tu nombre" />
+                  <p id="err-nombre" class="mt-1 hidden text-sm font-600 text-red-600" data-err="nombre">Escribe tu nombre.</p>
                 </div>
                 <div>
                   <label for="q-localidad" class="mb-1.5 block text-sm font-600">Localidad <span class="text-brand">*</span></label>
-                  <input id="q-localidad" type="text" autocomplete="address-level2" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Tu ciudad o pueblo" />
-                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="localidad">Indica tu localidad.</p>
+                  <input id="q-localidad" type="text" autocomplete="address-level2" aria-describedby="err-localidad" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Tu ciudad o pueblo" />
+                  <p id="err-localidad" class="mt-1 hidden text-sm font-600 text-red-600" data-err="localidad">Indica tu localidad.</p>
                 </div>
                 <div>
                   <label for="q-telefono" class="mb-1.5 block text-sm font-600">Teléfono <span class="text-brand">*</span></label>
-                  <input id="q-telefono" type="tel" autocomplete="tel" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Para poder llamarte" />
-                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="telefono">Indica un teléfono de contacto.</p>
+                  <input id="q-telefono" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="err-telefono" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Ej. 600 123 456" />
+                  <p id="err-telefono" class="mt-1 hidden text-sm font-600 text-red-600" data-err="telefono">Indica un teléfono válido (al menos 9 cifras).</p>
                 </div>
                 <div>
                   <label for="q-email" class="mb-1.5 block text-sm font-600">Correo <span class="text-brand">*</span></label>
-                  <input id="q-email" type="email" autocomplete="email" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="tucorreo@ejemplo.com" />
-                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="email">Introduce un correo válido.</p>
+                  <input id="q-email" type="email" inputmode="email" autocomplete="email" aria-describedby="err-email" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="tucorreo@ejemplo.com" />
+                  <p id="err-email" class="mt-1 hidden text-sm font-600 text-red-600" data-err="email">Introduce un correo válido.</p>
                 </div>
                 <div>
                   <label for="q-detalles" class="mb-1.5 block text-sm font-600">Detalles <span class="font-400 text-muted">(opcional)</span></label>
@@ -540,14 +705,14 @@
                 <!-- Consentimientos RGPD -->
                 <div class="space-y-2 rounded-xl border border-line bg-page p-4">
                   <label class="flex items-start gap-2.5 text-sm text-ink">
-                    <input type="checkbox" id="q-privacy" class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brandDeep" />
+                    <input type="checkbox" id="q-privacy" aria-describedby="err-privacy" class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brandDeep" />
                     <span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" class="font-700 text-brandDeep underline">política de privacidad</a>. <span class="text-brand">*</span></span>
                   </label>
                   <label class="flex items-start gap-2.5 text-sm text-muted">
                     <input type="checkbox" id="q-marketing" class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brandDeep" />
                     <span>Quiero recibir ofertas, novedades y consejos sobre el mantenimiento de mi piscina <span class="opacity-70">(opcional)</span></span>
                   </label>
-                  <p class="mt-1 hidden text-sm font-600 text-red-600" data-err="privacy">Debes aceptar la política de privacidad.</p>
+                  <p id="err-privacy" class="mt-1 hidden text-sm font-600 text-red-600" data-err="privacy">Debes aceptar la política de privacidad.</p>
                 </div>
 
                 <div class="mt-2 grid gap-3 sm:grid-cols-2">
@@ -588,36 +753,54 @@
       </div>
     </section>
 
-    <!-- ========================= OPINIONES ========================= -->
-    <section id="opiniones" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
-      <div class="reveal mb-10 max-w-2xl">
-        <h2 class="font-display text-3xl font-800 tracking-tight md:text-4xl">Lo que dicen nuestros clientes</h2>
-      </div>
-      <div class="reveal grid gap-5 md:grid-cols-3">
-        <figure class="flex flex-col rounded-[1.25rem] border border-line bg-white p-6">
-          <div class="mb-3 flex gap-0.5 text-brand"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <blockquote class="text-[15px] leading-relaxed text-ink">"Llevan dos años cuidando nuestra piscina y el agua siempre está impecable. Puntuales y muy profesionales."</blockquote>
-          <figcaption class="mt-5 flex items-center gap-3 border-t border-line pt-4">
-            <span class="grid h-10 w-10 place-items-center rounded-full bg-tint font-700 text-brandDeep">MB</span>
-            <span><span class="block text-sm font-700">Marta Belmonte</span><span class="block text-xs text-muted">Vivienda particular, Madrid</span></span>
-          </figcaption>
-        </figure>
-        <figure class="flex flex-col rounded-[1.25rem] border border-line bg-white p-6">
-          <div class="mb-3 flex gap-0.5 text-brand"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <blockquote class="text-[15px] leading-relaxed text-ink">"Detectaron una fuga que otros no encontraban y la repararon en dos días. Un alivio total."</blockquote>
-          <figcaption class="mt-5 flex items-center gap-3 border-t border-line pt-4">
-            <span class="grid h-10 w-10 place-items-center rounded-full bg-tint font-700 text-brandDeep">JC</span>
-            <span><span class="block text-sm font-700">José Luis Cabrera</span><span class="block text-xs text-muted">Chalet en Pozuelo de Alarcón</span></span>
-          </figcaption>
-        </figure>
-        <figure class="flex flex-col rounded-[1.25rem] border border-line bg-white p-6">
-          <div class="mb-3 flex gap-0.5 text-brand"><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i><i class="ph-fill ph-star"></i></div>
-          <blockquote class="text-[15px] leading-relaxed text-ink">"Gestionan el mantenimiento de la piscina de toda la comunidad. Cero problemas en verano."</blockquote>
-          <figcaption class="mt-5 flex items-center gap-3 border-t border-line pt-4">
-            <span class="grid h-10 w-10 place-items-center rounded-full bg-tint font-700 text-brandDeep">FA</span>
-            <span><span class="block text-sm font-700">Finca Los Almendros</span><span class="block text-xs text-muted">Comunidad en Las Rozas</span></span>
-          </figcaption>
-        </figure>
+    <!-- ========================= ZONAS + RESUMEN =========================
+         Datos clave en texto plano y fácil de citar: ayuda a Google (SEO local)
+         y a los buscadores con IA (ChatGPT, Gemini, Claude, Perplexity). -->
+    <section id="zonas" class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
+      <div class="grid gap-10 lg:grid-cols-2 lg:gap-16">
+        <div class="reveal">
+          <p class="mb-3 text-xs font-700 uppercase tracking-[0.16em] text-brandDeep">Zonas de servicio</p>
+          <h2 class="font-display text-3xl font-800 tracking-tight md:text-4xl">Mantenimiento de piscinas en Madrid y alrededores</h2>
+          <p class="mt-3 max-w-prose text-muted">Trabajamos en Madrid capital y en los municipios de la Comunidad de Madrid. Si tu localidad no aparece en la lista, pregúntanos: probablemente también llegamos.</p>
+          <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-[15px] font-600">
+            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Madrid capital</li>
+            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Pozuelo de Alarcón</li>
+            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Las Rozas de Madrid</li>
+            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Boadilla del Monte</li>
+            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Majadahonda</li>
+            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Alcobendas</li>
+          </ul>
+        </div>
+
+        <div class="reveal rounded-[1.25rem] border border-line bg-white p-6 sm:p-8">
+          <h2 class="font-display text-xl font-800">RQT Pools en resumen</h2>
+          <dl class="mt-5 divide-y divide-line text-[15px]">
+            <div class="grid gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+              <dt class="font-700">Qué hacemos</dt>
+              <dd class="text-muted sm:col-span-2">Mantenimiento, tratamiento del agua y reparación de piscinas en Madrid.</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+              <dt class="font-700">Para quién</dt>
+              <dd class="text-muted sm:col-span-2">Particulares, comunidades de vecinos, hoteles y negocios.</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+              <dt class="font-700">Servicios</dt>
+              <dd class="text-muted sm:col-span-2">Mantenimiento periódico, tratamiento del agua, cambio de lecho filtrante, instalación de filtros y depuradoras, lonas y cubiertas, reparación de equipos, detección de fugas y apertura y cierre de temporada.</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+              <dt class="font-700">Horario</dt>
+              <dd class="text-muted sm:col-span-2">Lunes a sábado, de 8:00 a 20:00.</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+              <dt class="font-700">Presupuesto</dt>
+              <dd class="text-muted sm:col-span-2">Gratis y sin compromiso. Respondemos en 24-48h laborables. Sin permanencia.</dd>
+            </div>
+            <div class="grid gap-1 py-3 sm:grid-cols-3 sm:gap-4">
+              <dt class="font-700">Contacto</dt>
+              <dd class="text-muted sm:col-span-2"><a href="tel:+34678137051" class="font-700 text-brandDeep">678 13 70 51</a> (teléfono y WhatsApp) · <a href="mailto:hola@rqtpools.com" class="font-700 text-brandDeep">hola@rqtpools.com</a></dd>
+            </div>
+          </dl>
+        </div>
       </div>
     </section>
 
@@ -687,7 +870,7 @@
 
   <!-- ========================= FOOTER ========================= -->
   <footer class="bg-ink text-white/80">
-    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:grid-cols-4">
+    <div class="mx-auto grid max-w-7xl gap-10 px-5 py-14 sm:px-8 sm:grid-cols-2 lg:grid-cols-5">
       <div class="lg:col-span-2">
         <a href="#inicio" class="flex items-center" aria-label="RQT Pools - Inicio">
           <svg viewBox="0 0 180 50" xmlns="http://www.w3.org/2000/svg" class="h-11 w-auto" role="img" aria-label="RQT Pools">
@@ -698,6 +881,21 @@
           </svg>
         </a>
         <p class="mt-4 max-w-sm text-sm text-white/65">Mantenimiento, tratamiento del agua y reparación de piscinas en Madrid para particulares, comunidades y negocios.</p>
+      </div>
+
+      <div>
+        <p class="mb-4 font-display text-sm font-700 uppercase tracking-wide text-white">Servicios</p>
+        <ul class="space-y-2.5 text-sm">
+          <li><a href="servicios/mantenimiento-piscinas-madrid/" class="transition hover:text-white">Mantenimiento de piscinas</a></li>
+          <li><a href="servicios/tratamiento-agua-piscina/" class="transition hover:text-white">Tratamiento del agua</a></li>
+          <li><a href="servicios/cambio-lecho-filtrante/" class="transition hover:text-white">Cambio de lecho filtrante</a></li>
+          <li><a href="servicios/instalacion-filtros-depuradoras/" class="transition hover:text-white">Filtros y depuradoras</a></li>
+          <li><a href="servicios/lonas-cubiertas-piscina/" class="transition hover:text-white">Lonas y cubiertas</a></li>
+          <li><a href="servicios/reparacion-equipos-piscina/" class="transition hover:text-white">Reparación de equipos</a></li>
+          <li><a href="servicios/deteccion-fugas-piscina/" class="transition hover:text-white">Detección de fugas</a></li>
+          <li><a href="servicios/apertura-cierre-temporada-piscina/" class="transition hover:text-white">Apertura y cierre de temporada</a></li>
+          <li><a href="servicios/mantenimiento-piscinas-comunidades/" class="transition hover:text-white">Comunidades y hoteles</a></li>
+        </ul>
       </div>
 
       <div>
@@ -758,8 +956,12 @@
     // ---- Menú móvil ----
     const menuBtn = document.getElementById('menuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
-    menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    function setMenu(open) {
+      mobileMenu.classList.toggle('hidden', !open);
+      menuBtn.setAttribute('aria-expanded', String(open));
+    }
+    menuBtn.addEventListener('click', () => setMenu(mobileMenu.classList.contains('hidden')));
+    mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
 
     // ---- Revelado al hacer scroll ----
     const io = new IntersectionObserver((entries) => {
@@ -827,23 +1029,24 @@
       };
     }
 
-    // Muestra/oculta el mensaje de error de un campo
+    // Muestra/oculta el mensaje de error de un campo y lo marca para lectores de pantalla
+    const FIELD_IDS = { nombre: 'q-nombre', localidad: 'q-localidad', telefono: 'q-telefono', email: 'q-email', privacy: 'q-privacy' };
     function toggleError(campo, mostrar) {
       const el = document.querySelector('[data-err="' + campo + '"]');
       if (el) el.classList.toggle('hidden', !mostrar);
+      const input = document.getElementById(FIELD_IDS[campo]);
+      if (input) input.setAttribute('aria-invalid', String(mostrar));
     }
 
-    // Validación paso 4 (delega las reglas en QuizLogic)
+    // Validación paso 4 (todas las reglas viven en QuizLogic)
     function validate() {
-      const lead = readForm();
-      const result = QuizLogic.validateLead(lead);
-      const errors = Object.assign({}, result.errors);
-      // Email obligatorio (necesario para la autorespuesta y el CRM).
-      if (!lead.email || !String(lead.email).trim()) errors.email = true;
-      ['nombre', 'localidad', 'telefono', 'email', 'privacy'].forEach(function (campo) {
-        toggleError(campo, !!errors[campo]);
-      });
-      return result.valid && !errors.email;
+      const result = QuizLogic.validateLead(readForm());
+      const campos = Object.keys(FIELD_IDS);
+      campos.forEach(function (campo) { toggleError(campo, !!result.errors[campo]); });
+      // Lleva el foco al primer campo con error
+      const primero = campos.find(function (campo) { return result.errors[campo]; });
+      if (primero) document.getElementById(FIELD_IDS[primero]).focus();
+      return result.valid;
     }
 
     function buildMessage() {
@@ -906,7 +1109,7 @@
       ['q-nombre', 'q-localidad', 'q-telefono', 'q-email', 'q-detalles'].forEach(id => { document.getElementById(id).value = ''; });
       document.getElementById('q-privacy').checked = false;
       document.getElementById('q-marketing').checked = false;
-      document.querySelectorAll('[data-err]').forEach(e => e.classList.add('hidden'));
+      Object.keys(FIELD_IDS).forEach(campo => toggleError(campo, false));
       document.getElementById('quizProgressWrap').classList.remove('hidden');
       document.getElementById('quizNav').classList.remove('hidden');
       current = 0;
