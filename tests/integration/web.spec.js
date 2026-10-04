@@ -274,3 +274,86 @@ test.describe('Páginas legales', () => {
     await expect(page.locator('a[href="mailto:hola@rqtpools.com"]').first()).toBeVisible();
   });
 });
+
+test.describe('Móvil', () => {
+  test('la cabecera muestra el botón de llamar en móvil', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('/');
+    await expect(page.locator('header a[aria-label="Llamar al 678 13 70 51"]')).toBeVisible();
+  });
+
+  test('el menú móvil indica si está abierto (aria-expanded)', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.setViewportSize({ width: 375, height: 812 });
+    await page.goto('/');
+    await expect(page.locator('#menuBtn')).toHaveAttribute('aria-expanded', 'false');
+    await page.click('#menuBtn');
+    await expect(page.locator('#mobileMenu')).toBeVisible();
+    await expect(page.locator('#menuBtn')).toHaveAttribute('aria-expanded', 'true');
+  });
+});
+
+test.describe('Hero y contenido', () => {
+  test('el hero se ve sin esperar a la animación de entrada (LCP)', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    await expect(page.locator('h1').locator('xpath=ancestor::*[contains(@class,"reveal")]')).toHaveCount(0);
+    await expect(page.locator('img[src="assets/img/hero.webp"]').locator('xpath=ancestor::*[contains(@class,"reveal")]')).toHaveCount(0);
+  });
+
+  test('no hay sección de opiniones', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    await expect(page.locator('#opiniones')).toHaveCount(0);
+    await expect(page.locator('a[href="#opiniones"]')).toHaveCount(0);
+  });
+
+  test('el FAQPage del schema coincide con las preguntas visibles', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+    const faq = blocks.map((b) => JSON.parse(b)).find((j) => j['@type'] === 'FAQPage');
+    const visibles = (await page.locator('#faq summary').allTextContents()).map((t) => t.trim());
+    expect(faq.mainEntity.map((q) => q.name)).toEqual(visibles);
+  });
+
+  test('teléfono con formato inválido muestra error', async ({ page }) => {
+    await dismissCookiesBeforeLoad(page);
+    await stubWindowOpen(page);
+    await page.goto('/');
+    await goToStep4(page);
+    await fillStep4(page);
+    await page.fill('#q-telefono', 'abc');
+    await page.click('#send-wa');
+    await expect(page.locator('[data-err="telefono"]')).toBeVisible();
+    await expect(page.locator('#q-telefono')).toHaveAttribute('aria-invalid', 'true');
+    await expect(page.locator('#q-telefono')).toBeFocused();
+  });
+});
+
+test.describe('Páginas de servicio (SEO)', () => {
+  test('cada tarjeta de servicio enlaza a una página que existe, con H1, canonical y schema', async ({ page, request }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const hrefs = await page.locator('#servicios h3 a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    expect(hrefs.length).toBe(9);
+    for (const href of hrefs) {
+      await page.goto('/' + href);
+      await expect(page.locator('h1')).toHaveCount(1);
+      const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
+      expect(canonical).toBe('https://rqtpools.com/' + href);
+      const types = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((b) => JSON.parse(b)['@type']);
+      expect(types).toEqual(expect.arrayContaining(['Service', 'WebPage', 'FAQPage']));
+    }
+  });
+
+  test('sitemap sin anclas (#) e incluye las páginas de servicio; robots y llms.txt existen', async ({ request }) => {
+    const sitemap = await (await request.get('/sitemap.xml')).text();
+    expect(sitemap).not.toContain('#');
+    expect(sitemap).toContain('/servicios/cambio-lecho-filtrante/');
+    expect((await request.get('/robots.txt')).ok()).toBe(true);
+    const llms = await (await request.get('/llms.txt')).text();
+    expect(llms).toContain('# RQT Pools');
+  });
+});

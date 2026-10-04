@@ -20,18 +20,23 @@ Sitio web profesional de **RQT Pools**, empresa de mantenimiento de piscinas en 
 
 ## Stack técnico
 
-- **HTML5** estático (un solo archivo `index.html` + páginas legales)
-- **Tailwind CSS** vía CDN (paleta de marca: navy `#102A43` + teal `#00A3C4`)
+- **HTML5** estático (`index.html`, páginas de servicio y páginas legales)
+- **Tailwind CSS** compilado a `assets/styles.css` (paleta de marca: navy `#102A43` + teal `#00A3C4`)
 - **Bunny Fonts** (alternativa privacy-friendly a Google Fonts)
 - **Phosphor Icons** vía CDN
 - **JavaScript vanilla** (cuestionario multi-paso, banner de cookies, animaciones)
-- **JSON-LD** estructurado (LocalBusiness + FAQPage) para SEO
+- **JSON-LD** estructurado (LocalBusiness, WebSite, FAQPage; Service + Breadcrumb en cada servicio)
+- **GEO** (buscadores con IA): `llms.txt`, `robots.txt` abierto a sus rastreadores y datos clave en texto plano
 
 ## Estructura
 
 ```
 rqtpools/
 ├── index.html                    # Landing principal
+├── servicios/<slug>/index.html   # Una página por servicio (GENERADAS, no editar a mano)
+├── scripts/servicios-data.mjs    # Textos de las páginas de servicio
+├── scripts/build-servicios.mjs   # Generador de páginas de servicio + sitemap.xml
+├── llms.txt                      # Resumen de la empresa para ChatGPT, Claude, Gemini...
 ├── aviso-legal.html              # Aviso legal (LSSI-CE)
 ├── politica-privacidad.html      # Política de privacidad (RGPD)
 ├── politica-cookies.html         # Política de cookies
@@ -63,6 +68,14 @@ npx serve -l 4173
 
 Luego abre [http://localhost:4173](http://localhost:4173).
 
+## Editar contenido
+
+- **Home**: edita `index.html` directamente.
+- **Páginas de servicio**: edita `scripts/servicios-data.mjs` y ejecuta `npm run build`
+  (regenera las páginas, `sitemap.xml` y el CSS de Tailwind).
+- Si cambias datos de contacto, horario o zonas, actualiza también `llms.txt` y el JSON-LD de `index.html`.
+- Tests: `npm test`.
+
 ## Despliegue
 
 Cualquier hosting de archivos estáticos funciona:
@@ -76,10 +89,11 @@ Cualquier hosting de archivos estáticos funciona:
 
 - [ ] Rellenar marcadores `[xxx]` en las páginas legales con datos fiscales reales
 - [ ] Subir favicon en PNG (actualmente SVG inline)
-- [ ] Crear imagen Open Graph `og-image.jpg` (1200×630px)
-- [ ] Configurar Google Business Profile en Madrid
+- [x] Crear imagen Open Graph (`assets/img/og.jpg`, 1200×630px)
+- [ ] Configurar Google Business Profile en Madrid (y añadir su URL en `sameAs` del JSON-LD)
+- [ ] Sustituir las fotos de banco de imágenes por fotos reales del equipo y trabajos
 - [ ] Integrar Formspree o Brevo para almacenar leads
-- [ ] Crear páginas dedicadas por servicio (`/servicios/cambio-lecho-filtrante`, etc.)
+- [x] Crear páginas dedicadas por servicio (`/servicios/cambio-lecho-filtrante/`, etc.)
 - [ ] Añadir Google Search Console y enviar sitemap
 
 ---
