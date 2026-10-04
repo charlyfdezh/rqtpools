@@ -19,7 +19,8 @@ const types = {
   '.jpg': 'image/jpeg',
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
-  '.json': 'application/json'
+  '.json': 'application/json',
+  '.ico': 'image/x-icon'
 };
 
 const server = http.createServer(async (req, res) => {
