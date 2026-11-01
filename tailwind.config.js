@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         ink:       '#102A43',
         brand:     '#00A3C4',
-        brandDeep: '#0086a3',
+        brandDeep: '#00758f', // antes #0086a3: oscurecido para contraste WCAG AA (5,3:1 sobre blanco)
         tint:      '#e6f7fb',
         page:      '#f5fbfc',
         line:      '#d6e6ea',

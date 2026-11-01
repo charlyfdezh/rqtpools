@@ -39,7 +39,7 @@ test.describe('Carga y estructura', () => {
   test('la home carga con el título correcto', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);
     await page.goto('/');
-    await expect(page).toHaveTitle(/Mantenimiento Integral de Piscinas \| RQT Pools/);
+    await expect(page).toHaveTitle('RQT Pools | Mantenimiento de Piscinas en Madrid');
   });
 
   test('el logo SVG y la navegación están presentes', async ({ page }) => {
@@ -68,11 +68,20 @@ test.describe('Carga y estructura', () => {
     expect(website.name).toBe('RQT Pools');
   });
 
-  test('el icono del jacuzzi usa una clase válida de Phosphor (ph-bathtub)', async ({ page }) => {
+  test('el icono del jacuzzi apunta al símbolo ph-bathtub del sprite', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);
     await page.goto('/');
-    const icon = page.locator('.opt[data-value="Spa o jacuzzi"] i');
-    await expect(icon).toHaveClass(/ph-bathtub/);
+    const use = page.locator('.opt[data-value="Spa o jacuzzi"] svg use');
+    await expect(use).toHaveAttribute('href', '/assets/icons.svg#ph-bathtub');
+  });
+
+  test('todos los iconos usados existen en assets/icons.svg', async ({ page, request }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const sprite = await (await request.get('/assets/icons.svg')).text();
+    const ids = await page.locator('svg.icon use').evaluateAll((us) => [...new Set(us.map((u) => u.getAttribute('href').split('#')[1]))]);
+    expect(ids.length).toBeGreaterThan(10);
+    for (const id of ids) expect(sprite, id).toContain(`id="${id}"`);
   });
 
   test('el botón flotante de WhatsApp apunta al número correcto', async ({ page }) => {
@@ -206,25 +215,25 @@ test.describe('Cuestionario - envío', () => {
 });
 
 test.describe('Seguridad', () => {
-  test('la home declara Content-Security-Policy con frame-ancestors none', async ({ page }) => {
+  test('la home declara Content-Security-Policy estricta (sin dominios de terceros para estilos y fuentes)', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);
     await page.goto('/');
     const csp = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');
-    expect(csp).toBeTruthy();
-    expect(csp).toContain("frame-ancestors 'none'");
     expect(csp).toContain("object-src 'none'");
+    expect(csp).toContain("style-src 'self' 'unsafe-inline';");
+    expect(csp).toContain("font-src 'self';");
+    // frame-ancestors se ignora en <meta> y genera un error en consola
+    expect(csp).not.toContain('frame-ancestors');
   });
 
-  test('los recursos de Phosphor (unpkg) usan integridad SRI', async ({ page }) => {
+  test('no se cargan hojas de estilo ni fuentes de terceros (todo auto-alojado)', async ({ page }) => {
     await dismissCookiesBeforeLoad(page);
+    const externas = [];
+    page.on('request', (r) => { const u = new URL(r.url()); if (u.hostname !== 'localhost' && ['stylesheet', 'font'].includes(r.resourceType())) externas.push(r.url()); });
     await page.goto('/');
-    const links = page.locator('link[href*="unpkg.com"]');
-    const count = await links.count();
-    expect(count).toBeGreaterThan(0);
-    for (let i = 0; i < count; i++) {
-      const integrity = await links.nth(i).getAttribute('integrity');
-      expect(integrity).toMatch(/^sha384-/);
-    }
+    await page.waitForLoadState('networkidle');
+    expect(externas).toEqual([]);
+    expect(await page.evaluate(() => document.fonts.check('800 16px Outfit'))).toBe(true);
   });
 
   test('existe el campo honeypot oculto y no es visible para el usuario', async ({ page }) => {
@@ -254,7 +263,7 @@ test.describe('Seguridad', () => {
     for (const path of ['/aviso-legal.html', '/politica-privacidad.html', '/politica-cookies.html']) {
       await page.goto(path);
       const csp = await page.locator('meta[http-equiv="Content-Security-Policy"]').getAttribute('content');
-      expect(csp, 'CSP en ' + path).toContain("frame-ancestors 'none'");
+      expect(csp, 'CSP en ' + path).toContain("object-src 'none'");
     }
   });
 });

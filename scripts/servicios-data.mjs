@@ -12,7 +12,7 @@ export const SERVICIOS = [
   {
     slug: 'mantenimiento-piscinas-madrid',
     nombre: 'Mantenimiento de piscinas',
-    title: 'Mantenimiento de Piscinas en Madrid | RQT Pools',
+    title: 'Mantenimiento Semanal de Piscinas en Madrid | RQT Pools',
     description: 'Mantenimiento de piscinas en Madrid: limpieza semanal, control del agua y revisión de la depuradora. Sin permanencia. Presupuesto gratis: 678 13 70 51.',
     h1: 'Mantenimiento de piscinas en Madrid',
     intro: 'RQT Pools se encarga del mantenimiento periódico de piscinas particulares y comunitarias en Madrid y alrededores. En temporada de baño hacemos una visita semanal en la que limpiamos el vaso, ajustamos la química del agua y revisamos la depuradora, para que la piscina esté siempre lista para bañarse. Sin permanencia y con presupuesto cerrado.',
@@ -32,6 +32,20 @@ export const SERVICIOS = [
       {
         h2: '¿Cada cuánto hay que hacer el mantenimiento?',
         html: `<p>En temporada de baño (aproximadamente de mayo a septiembre) lo recomendable es <strong>una visita a la semana</strong>: con calor y bañistas el agua consume desinfectante muy rápido y las algas aparecen en pocos días. Fuera de temporada basta con visitas más espaciadas, según el estado de la piscina, o con un <a href="/servicios/apertura-cierre-temporada-piscina/" class="font-700 text-brandDeep underline">invernaje</a> bien hecho.</p>`
+      },
+      {
+        h2: 'Calendario de una piscina en Madrid',
+        html: `<div class="overflow-x-auto rounded-[1.25rem] border border-line bg-white">
+  <table class="w-full text-left text-[15px]">
+    <thead class="bg-tint text-ink"><tr><th class="px-5 py-3 font-700">Época</th><th class="px-5 py-3 font-700">Qué toca</th></tr></thead>
+    <tbody class="divide-y divide-line text-muted">
+      <tr><td class="px-5 py-3 font-600 text-ink">Marzo – abril</td><td class="px-5 py-3">Puesta a punto: retirar la lona, limpiar, revisar equipos y equilibrar el agua.</td></tr>
+      <tr><td class="px-5 py-3 font-600 text-ink">Mayo – septiembre</td><td class="px-5 py-3">Temporada de baño: mantenimiento semanal y más horas de filtrado.</td></tr>
+      <tr><td class="px-5 py-3 font-600 text-ink">Octubre – noviembre</td><td class="px-5 py-3">Invernaje: limpieza a fondo, producto de invernaje y lona de invierno.</td></tr>
+      <tr><td class="px-5 py-3 font-600 text-ink">Diciembre – febrero</td><td class="px-5 py-3">Pocas horas de filtrado, protección frente a heladas y revisiones puntuales.</td></tr>
+    </tbody>
+  </table>
+</div>`
       }
     ],
     proceso: [
@@ -45,7 +59,8 @@ export const SERVICIOS = [
       ['¿Cuánto cuesta el mantenimiento de una piscina en Madrid?', 'Depende del tamaño de la piscina, de la frecuencia de las visitas y del estado del agua y los equipos. Por eso damos un presupuesto cerrado y sin compromiso después de conocer tu piscina.'],
       ['¿Trabajáis también fuera de Madrid capital?', 'Sí. Damos servicio en municipios de la Comunidad de Madrid como Pozuelo de Alarcón, Las Rozas, Boadilla del Monte, Majadahonda y Alcobendas, y alrededores.']
     ],
-    relacionados: ['tratamiento-agua-piscina', 'apertura-cierre-temporada-piscina', 'mantenimiento-piscinas-comunidades']
+    relacionados: ['tratamiento-agua-piscina', 'apertura-cierre-temporada-piscina', 'mantenimiento-piscinas-comunidades'],
+    presupuesto: ['Localidad y, si es una urbanización, cuál.', 'Medidas aproximadas de la piscina (largo, ancho y profundidad).', 'Si es particular o de comunidad.', 'Si se desinfecta con cloro o con sal.', 'La frecuencia de visitas que te interesa.', 'Fotos de la piscina y del cuarto de depuración.']
   },
 
   {
@@ -102,7 +117,8 @@ export const SERVICIOS = [
       ['Si huele mucho a cloro, ¿es que hay demasiado?', 'Normalmente no. El olor fuerte procede del cloro combinado (cloraminas), que se forma cuando el cloro reacciona con la suciedad de los bañistas. Indica que hace falta más desinfección efectiva.'],
       ['¿Una piscina de sal también necesita mantenimiento?', 'Sí. El clorador salino produce cloro a partir de la sal, pero hay que controlar el pH (tiende a subir), el nivel de sal y limpiar la célula de cal periódicamente.']
     ],
-    relacionados: ['mantenimiento-piscinas-madrid', 'cambio-lecho-filtrante', 'reparacion-equipos-piscina']
+    relacionados: ['mantenimiento-piscinas-madrid', 'cambio-lecho-filtrante', 'reparacion-equipos-piscina'],
+    presupuesto: ['Una foto del agua tal como está ahora.', 'Si la piscina es de cloro o de sal.', 'Los últimos valores de pH y cloro, si los mides.', 'Medidas aproximadas de la piscina.', 'Desde cuándo está así el agua.']
   },
 
   {
@@ -111,7 +127,7 @@ export const SERVICIOS = [
     title: 'Cambio de Lecho Filtrante de Piscina en Madrid | RQT Pools',
     description: 'Cambio de arena o vidrio del filtro de la piscina en Madrid. Cuándo cambiar el lecho filtrante, señales y diferencias. Presupuesto gratis: 678 13 70 51.',
     h1: 'Cambio de lecho filtrante de la piscina',
-    intro: 'El lecho filtrante es la carga de arena o vidrio que hay dentro del filtro de la piscina y que retiene la suciedad del agua. Con los años se compacta y deja de filtrar bien, por lo que suele cambiarse cada 4-6 años según el uso. En RQT Pools vaciamos el filtro, lo limpiamos, revisamos sus piezas interiores y lo rellenamos con carga nueva, sin necesidad de vaciar la piscina.',
+    intro: 'El lecho filtrante es la carga de arena o vidrio que hay dentro del filtro de la piscina y que retiene la suciedad del agua. Con los años se compacta y deja de filtrar bien, por lo que suele cambiarse cada 3-5 años si es arena y cada 6-10 años si es vidrio. En RQT Pools vaciamos el filtro, lo limpiamos, revisamos sus piezas interiores y lo rellenamos con carga nueva, sin necesidad de vaciar la piscina.',
     imagen: 'tecnicos.webp', imagenSize: [1000, 667],
     imagenAlt: 'Piscina con el filtro recién revisado y el agua transparente',
     incluyeTitulo: 'Cómo hacemos el cambio',
@@ -130,15 +146,23 @@ export const SERVICIOS = [
   <li>• Tienes que lavar el filtro mucho más a menudo que antes.</li>
   <li>• La presión del manómetro sube muy rápido después de lavarlo.</li>
   <li>• Aparece arena en el fondo de la piscina (puede haber una crepina rota).</li>
-  <li>• Han pasado más de 4-6 años desde el último cambio.</li>
+  <li>• Han pasado más de 3-5 años (arena) o 6-10 años (vidrio) desde el último cambio.</li>
 </ul>`
       },
       {
-        h2: '¿Arena o vidrio?',
-        html: `<div class="grid gap-4 sm:grid-cols-2">
-  <div class="rounded-[1.25rem] border border-line bg-white p-5"><h3 class="font-display text-lg font-700">Arena de sílex</h3><p class="mt-2 text-sm text-muted">La opción tradicional y más económica. Filtra bien, pero se compacta con el tiempo y necesita cambiarse con más frecuencia.</p></div>
-  <div class="rounded-[1.25rem] border border-line bg-white p-5"><h3 class="font-display text-lg font-700">Vidrio filtrante</h3><p class="mt-2 text-sm text-muted">Cuesta más, pero filtra partículas más finas, se apelmaza menos y suele durar más que la arena. Además necesita menos lavados, lo que ahorra agua.</p></div>
-</div>`
+        h2: '¿Cada cuánto se cambia cada tipo de carga?',
+        html: `<p class="text-muted">Duración orientativa con un uso normal y lavados a contracorriente regulares. En piscinas comunitarias, con mucho uso en verano, conviene revisarla antes.</p>
+<div class="mt-5 overflow-x-auto rounded-[1.25rem] border border-line bg-white">
+  <table class="w-full text-left text-[15px]">
+    <thead class="bg-tint text-ink"><tr><th class="px-5 py-3 font-700">Tipo de carga</th><th class="px-5 py-3 font-700">Cambio orientativo</th><th class="px-5 py-3 font-700">Ventajas</th></tr></thead>
+    <tbody class="divide-y divide-line text-muted">
+      <tr><td class="px-5 py-3 font-600 text-ink">Arena de sílex</td><td class="px-5 py-3">Cada 3 – 5 años</td><td class="px-5 py-3">La más económica y la más habitual.</td></tr>
+      <tr><td class="px-5 py-3 font-600 text-ink">Vidrio filtrante</td><td class="px-5 py-3">Cada 6 – 10 años</td><td class="px-5 py-3">Filtra más fino, se apelmaza menos y necesita menos lavados (ahorra agua).</td></tr>
+      <tr><td class="px-5 py-3 font-600 text-ink">Vidrio activado (tipo AFM)</td><td class="px-5 py-3">Más de 10 años, según el fabricante</td><td class="px-5 py-3">La de mayor duración y la que mejor resiste la formación de biofilm; es la más cara.</td></tr>
+    </tbody>
+  </table>
+</div>
+<p class="mt-4 text-muted">Al cambiar la carga revisamos también las crepinas y el colector del filtro: si alguna está rota, la arena acaba saliendo al fondo de la piscina.</p>`
       }
     ],
     proceso: [
@@ -147,17 +171,18 @@ export const SERVICIOS = [
       ['Puesta en marcha', 'Lavamos, enjuagamos y dejamos la depuradora funcionando.']
     ],
     faqs: [
-      ['¿Cada cuánto hay que cambiar el lecho filtrante de la piscina?', 'El lecho filtrante (arena, vidrio o cristal) suele cambiarse cada 4-6 años, dependiendo del uso de la piscina y de la calidad del agua. Lo revisamos sin compromiso.'],
+      ['¿Cada cuánto hay que cambiar el lecho filtrante de la piscina?', 'Depende de la carga: la arena de sílex se cambia cada 3-5 años, el vidrio filtrante cada 6-10 años y el vidrio activado tipo AFM dura más de 10 años según el fabricante. El uso de la piscina y los lavados del filtro también influyen. Lo revisamos sin compromiso.'],
       ['¿Hay que vaciar la piscina para cambiar la arena del filtro?', 'No. El cambio se hace en el filtro, con la depuradora parada y las válvulas cerradas. La piscina se puede seguir usando en cuanto el equipo vuelve a funcionar.'],
-      ['¿Es mejor la arena o el vidrio para el filtro?', 'El vidrio filtra más fino, dura más y necesita menos lavados, pero cuesta más. La arena de sílex es más económica. Te recomendamos uno u otro según el uso de tu piscina.']
+      ['¿Es mejor la arena o el vidrio para el filtro?', 'El vidrio filtra más fino, dura el doble o más (6-10 años frente a 3-5 de la arena) y necesita menos lavados, pero cuesta más. La arena de sílex es más económica. Te recomendamos uno u otro según el uso de tu piscina.']
     ],
-    relacionados: ['instalacion-filtros-depuradoras', 'tratamiento-agua-piscina', 'reparacion-equipos-piscina']
+    relacionados: ['instalacion-filtros-depuradoras', 'tratamiento-agua-piscina', 'reparacion-equipos-piscina'],
+    presupuesto: ['El diámetro o el modelo del filtro (viene en la etiqueta).', 'La carga que tiene ahora: arena, vidrio u otra.', 'Cuántos años lleva sin cambiarse.', 'Una foto del filtro con el manómetro.']
   },
 
   {
     slug: 'instalacion-filtros-depuradoras',
     nombre: 'Filtros y depuradoras',
-    title: 'Instalación de Filtros y Depuradoras de Piscina en Madrid | RQT Pools',
+    title: 'Filtros y Depuradoras de Piscina en Madrid | RQT Pools',
     description: 'Instalación y sustitución de filtros, bombas y depuradoras de piscina en Madrid. Te asesoramos según el volumen de tu piscina. Tel. 678 13 70 51.',
     h1: 'Instalación de filtros y depuradoras de piscina',
     intro: 'En RQT Pools instalamos y sustituimos bombas, filtros y depuradoras completas en Madrid y alrededores. Si tu equipo es antiguo, hace ruido o no consigue dejar el agua limpia, te asesoramos para elegir uno adecuado al volumen de tu piscina y lo dejamos instalado, programado y funcionando.',
@@ -193,13 +218,14 @@ export const SERVICIOS = [
       ['¿Cuántas horas al día hay que filtrar la piscina?', 'Una regla orientativa en verano es filtrar tantas horas como la mitad de la temperatura del agua (por ejemplo, 13 horas con el agua a 26 °C). Depende también del tamaño del equipo y del uso de la piscina.'],
       ['¿Merece la pena una bomba de velocidad variable?', 'Suele compensar en piscinas que filtran muchas horas, porque a baja velocidad consume bastante menos electricidad que una bomba convencional y hace menos ruido.']
     ],
-    relacionados: ['cambio-lecho-filtrante', 'reparacion-equipos-piscina', 'mantenimiento-piscinas-madrid']
+    relacionados: ['cambio-lecho-filtrante', 'reparacion-equipos-piscina', 'mantenimiento-piscinas-madrid'],
+    presupuesto: ['Medidas o volumen de la piscina.', 'Fotos del cuarto de depuración y de las placas de características de la bomba y el filtro.', 'Cuántas horas al día filtras.', 'Qué problema notas con el equipo actual.']
   },
 
   {
     slug: 'lonas-cubiertas-piscina',
     nombre: 'Lonas y cubiertas',
-    title: 'Lonas y Cubiertas para Piscina a Medida en Madrid | RQT Pools',
+    title: 'Lonas y Cubiertas para Piscina en Madrid | RQT Pools',
     description: 'Lonas de invierno, cubiertas de verano y mantas térmicas para piscina, a medida e instaladas en Madrid. Presupuesto gratis: 678 13 70 51.',
     h1: 'Lonas y cubiertas para piscina a medida',
     intro: 'En RQT Pools suministramos e instalamos lonas y cubiertas para piscina hechas a medida en Madrid. Las lonas de invierno protegen la piscina cuando no se usa y reducen el mantenimiento; las cubiertas de verano y mantas térmicas reducen la evaporación y conservan el calor del agua.',
@@ -231,13 +257,14 @@ export const SERVICIOS = [
       ['¿Cuándo se pone la lona de invierno?', 'En otoño, cuando termina la temporada de baño y después de hacer el invernaje de la piscina. Se retira en primavera, antes de ponerla a punto.'],
       ['¿Una manta térmica calienta la piscina?', 'No calienta por sí misma, pero conserva el calor que el agua recibe del sol y evita que se pierda por la noche y por evaporación.']
     ],
-    relacionados: ['apertura-cierre-temporada-piscina', 'mantenimiento-piscinas-madrid', 'mantenimiento-piscinas-comunidades']
+    relacionados: ['apertura-cierre-temporada-piscina', 'mantenimiento-piscinas-madrid', 'mantenimiento-piscinas-comunidades'],
+    presupuesto: ['Medidas y forma de la piscina.', 'Si tiene escalera de obra, cascada u otros obstáculos.', 'Qué tipo de cubierta buscas (de invierno o manta térmica).', 'Fotos de la piscina y su perímetro.']
   },
 
   {
     slug: 'reparacion-equipos-piscina',
     nombre: 'Reparación de equipos',
-    title: 'Reparación de Bombas y Depuradoras de Piscina en Madrid | RQT Pools',
+    title: 'Reparación de Bombas de Piscina en Madrid | RQT Pools',
     description: 'Reparación de bombas, depuradoras, filtros y cloradores salinos de piscina en Madrid. Diagnóstico y presupuesto sin compromiso. Tel. 678 13 70 51.',
     h1: 'Reparación de bombas y equipos de piscina',
     intro: 'En RQT Pools diagnosticamos y reparamos averías en bombas, depuradoras, filtros y cloradores salinos de piscinas en Madrid. Si la bomba no arranca, hace ruido o pierde agua, o el clorador salino marca un error, revisamos el equipo y te decimos con claridad si compensa repararlo o sustituirlo.',
@@ -268,13 +295,14 @@ export const SERVICIOS = [
       ['¿Por qué el clorador salino no produce cloro?', 'Suele deberse a una célula incrustada de cal, a un nivel de sal bajo o a una célula que ha llegado al final de su vida útil. Revisamos el equipo y te decimos qué necesita.'],
       ['¿Reparáis equipos de cualquier marca?', 'Revisamos bombas, filtros, depuradoras y cloradores salinos de las marcas habituales. Si hay que pedir una pieza, te lo indicamos en el presupuesto.']
     ],
-    relacionados: ['instalacion-filtros-depuradoras', 'deteccion-fugas-piscina', 'cambio-lecho-filtrante']
+    relacionados: ['instalacion-filtros-depuradoras', 'deteccion-fugas-piscina', 'cambio-lecho-filtrante'],
+    presupuesto: ['Qué equipo falla y su marca y modelo (foto de la placa).', 'Qué hace: ruido, no arranca, pierde agua o muestra un error.', 'Desde cuándo pasa.', 'Un vídeo corto si el problema es un ruido.']
   },
 
   {
     slug: 'deteccion-fugas-piscina',
     nombre: 'Detección de fugas',
-    title: 'Detección y Reparación de Fugas en Piscinas en Madrid | RQT Pools',
+    title: 'Detección de Fugas en Piscinas en Madrid | RQT Pools',
     description: '¿Tu piscina pierde agua? Detectamos y reparamos fugas en el vaso, tuberías y equipos en Madrid. Cómo saber si es fuga o evaporación. Tel. 678 13 70 51.',
     h1: 'Detección y reparación de fugas en piscinas',
     intro: 'Si tu piscina pierde más agua de lo normal, puede haber una fuga en el vaso, en las tuberías o en los equipos de depuración. En RQT Pools comprobamos primero si la pérdida es evaporación o una fuga real, localizamos el punto exacto y lo reparamos, en Madrid y alrededores.',
@@ -311,7 +339,8 @@ export const SERVICIOS = [
       ['¿Cuánta agua pierde una piscina por evaporación?', 'Depende del calor, el viento y el sol, pero en verano es normal perder algunos milímetros al día. Pérdidas mayores o constantes suelen indicar una fuga.'],
       ['¿Dónde suelen estar las fugas de una piscina?', 'Lo más habitual es en las piezas empotradas (skimmers, boquillas, focos), en las tuberías del circuito de depuración y en los equipos. Las grietas en el vaso son menos frecuentes.']
     ],
-    relacionados: ['reparacion-equipos-piscina', 'mantenimiento-piscinas-madrid', 'mantenimiento-piscinas-comunidades']
+    relacionados: ['reparacion-equipos-piscina', 'mantenimiento-piscinas-madrid', 'mantenimiento-piscinas-comunidades'],
+    presupuesto: ['Cuántos milímetros o centímetros baja el nivel al día.', 'El resultado de la prueba del cubo, si la has hecho.', 'Si baja igual con la depuradora parada que en marcha.', 'Fotos de humedades, grietas o charcos que hayas visto.']
   },
 
   {
@@ -355,13 +384,14 @@ export const SERVICIOS = [
       ['¿Es mejor vaciar la piscina en invierno?', 'En general no. El agua protege el vaso de las heladas y de deformaciones del terreno. Lo recomendable es invernarla con agua y renovarla parcialmente cuando sea necesario.'],
       ['¿Hay que filtrar la piscina en invierno?', 'Sí, aunque muchas menos horas que en verano. Mantener algo de circulación ayuda a que el producto de invernaje se reparta y a evitar que se congelen las tuberías.']
     ],
-    relacionados: ['lonas-cubiertas-piscina', 'mantenimiento-piscinas-madrid', 'tratamiento-agua-piscina']
+    relacionados: ['lonas-cubiertas-piscina', 'mantenimiento-piscinas-madrid', 'tratamiento-agua-piscina'],
+    presupuesto: ['Si necesitas el cierre, la apertura o los dos.', 'Medidas aproximadas de la piscina.', 'Si tienes lona de invierno.', 'Una foto de cómo está el agua ahora.']
   },
 
   {
     slug: 'mantenimiento-piscinas-comunidades',
     nombre: 'Comunidades y hoteles',
-    title: 'Mantenimiento de Piscinas para Comunidades en Madrid | RQT Pools',
+    title: 'Piscinas de Comunidades de Vecinos en Madrid | RQT Pools',
     description: 'Mantenimiento de piscinas de comunidades de vecinos, hoteles y negocios en Madrid. Contrato claro, control del agua y puesta a punto. Tel. 678 13 70 51.',
     h1: 'Mantenimiento de piscinas para comunidades de vecinos y hoteles',
     intro: 'En RQT Pools gestionamos el mantenimiento de piscinas de comunidades de vecinos, hoteles y negocios en Madrid. Nos ocupamos de la limpieza, del control de la calidad del agua, de los equipos y de la apertura y el cierre de temporada, con un contrato claro adaptado al uso de cada piscina.',
@@ -392,6 +422,7 @@ export const SERVICIOS = [
       ['¿Podéis coordinaros con el administrador de fincas?', 'Sí. Podemos tratar directamente con el administrador o con el presidente de la comunidad para presupuestos, visitas e incidencias.'],
       ['¿Qué normativa se aplica a las piscinas comunitarias?', 'A nivel estatal, el Real Decreto 742/2013 sobre criterios técnico-sanitarios de las piscinas, además de la normativa de la Comunidad de Madrid. Los requisitos concretos dependen del tipo de piscina.']
     ],
-    relacionados: ['mantenimiento-piscinas-madrid', 'tratamiento-agua-piscina', 'apertura-cierre-temporada-piscina']
+    relacionados: ['mantenimiento-piscinas-madrid', 'tratamiento-agua-piscina', 'apertura-cierre-temporada-piscina'],
+    presupuesto: ['Número de viviendas o tipo de uso (comunidad, hotel, negocio).', 'Medidas del vaso y si hay piscina infantil.', 'Fechas de la temporada de baño.', 'Datos de contacto del administrador o del presidente.', 'Equipos actuales del cuarto de depuración.']
   }
 ];

@@ -10,7 +10,13 @@ import { SERVICIOS, ZONAS } from './servicios-data.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://rqtpools.com';
 const HOY = new Date().toISOString().slice(0, 10);
+const HOY_TEXTO = new Date().toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' });
 const bySlug = Object.fromEntries(SERVICIOS.map((s) => [s.slug, s]));
+
+// Versiones reducidas de cada imagen (para móvil). Generadas en assets/img/<nombre>-<ancho>.webp
+const MOVIL = { 'servicio-particular.webp': 600, 'servicio-comunidad.webp': 600, 'tecnicos.webp': 600, 'cta-atardecer.webp': 800, 'hero.webp': 720 };
+const srcset = (img, w) => MOVIL[img] ? `/assets/img/${img.replace('.webp', '-' + MOVIL[img] + '.webp')} ${MOVIL[img]}w, /assets/img/${img} ${w}w` : '';
+const SIZES = '(min-width: 1024px) 500px, 100vw';
 
 const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const ld = (obj) => '  <script type="application/ld+json">\n' + JSON.stringify(obj, null, 2).split('\n').map((l) => '  ' + l).join('\n') + '\n  </script>';
@@ -66,7 +72,7 @@ function page(s) {
     mainEntity: s.faqs.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } }))
   };
 
-  const incluye = s.incluye.map((i) => `            <li class="flex items-start gap-3"><i class="ph-fill ph-check-circle mt-0.5 shrink-0 text-[20px] text-brandDeep" aria-hidden="true"></i><span>${esc(i)}</span></li>`).join('\n');
+  const incluye = s.incluye.map((i) => `            <li class="flex items-start gap-3"><svg class="icon mt-0.5 shrink-0 text-[20px] text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-check-circle"></use></svg><span>${esc(i)}</span></li>`).join('\n');
   const extra = s.extra.map((e) => `
       <section class="mt-14">
         <h2 class="font-display text-2xl font-800 tracking-tight md:text-3xl">${esc(e.h2)}</h2>
@@ -75,15 +81,16 @@ ${e.html}
         </div>
       </section>`).join('\n');
   const proceso = s.proceso.map(([t, d], i) => `          <li class="bg-white p-6">
-            <span class="font-display text-4xl font-800 text-brand/30">0${i + 1}</span>
+            <span class="font-display text-4xl font-800 text-brandDeep/70">0${i + 1}</span>
             <h3 class="mt-3 font-display text-lg font-700">${esc(t)}</h3>
             <p class="mt-1.5 text-sm text-muted">${esc(d)}</p>
           </li>`).join('\n');
+  const presupuesto = (s.presupuesto || []).map((i) => `          <li class="flex items-start gap-3"><span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brandDeep"></span><span>${esc(i)}</span></li>`).join('\n');
   const faqs = s.faqs.map(([q, a]) => `          <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">${esc(q)} <i class="ph ph-caret-down faq-chevron text-brandDeep" aria-hidden="true"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">${esc(q)} <svg class="icon faq-chevron text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">${esc(a)}</p>
           </details>`).join('\n');
-  const relacionados = s.relacionados.map((r) => `          <a href="/servicios/${r}/" class="flex items-center justify-between gap-3 rounded-[1.25rem] border border-line bg-white p-5 font-700 transition hover:border-brand hover:text-brandDeep">${esc(bySlug[r].nombre)} <i class="ph ph-arrow-right text-brandDeep" aria-hidden="true"></i></a>`).join('\n');
+  const relacionados = s.relacionados.map((r) => `          <a href="/servicios/${r}/" class="flex items-center justify-between gap-3 rounded-[1.25rem] border border-line bg-white p-5 font-700 transition hover:border-brand hover:text-brandDeep">${esc(bySlug[r].nombre)} <svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-arrow-right"></use></svg></a>`).join('\n');
   const otros = SERVICIOS.map((o) => `          <li><a href="/servicios/${o.slug}/" class="transition hover:text-white">${esc(o.nombre)}</a></li>`).join('\n');
 
   return `<!doctype html>
@@ -92,7 +99,7 @@ ${e.html}
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net https://unpkg.com; img-src 'self' data:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <title>${esc(s.title)}</title>
@@ -116,11 +123,9 @@ ${e.html}
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <link rel="preload" as="image" fetchpriority="high" href="/assets/img/${s.imagen}" />
-  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
-  <link href="https://fonts.bunny.net/css?family=outfit:400,500,600,700,800|manrope:400,500,600,700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" integrity="sha384-6p9AefaqUhEVheRlj1mpAkbngHXy9mbYMrIdcIt4Jlc9lOLIablJq3bBsLOjGwZ7" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" integrity="sha384-pPVoXE8ft+zxKtxIDDI7SfTK6y95NHm4qa+hKEg/hs8VkjW5IP+9/dGOPCbDpUPl" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preload" as="image" fetchpriority="high" href="/assets/img/${s.imagen}" imagesrcset="${srcset(s.imagen, w)}" imagesizes="${SIZES}" />
+  <link rel="preload" href="/assets/fonts/outfit-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/assets/styles.css" />
   <style>
     body { font-family: 'Manrope', sans-serif; }
@@ -147,11 +152,11 @@ ${ld(schemaFaq)}
         <a href="/#servicios" class="text-sm font-600 text-muted transition hover:text-ink">Servicios</a>
         <a href="/#zonas" class="text-sm font-600 text-muted transition hover:text-ink">Zonas</a>
         <a href="/#faq" class="text-sm font-600 text-muted transition hover:text-ink">Preguntas</a>
-        <a href="tel:+34678137051" class="flex items-center gap-2 text-sm font-700 text-brandDeep"><i class="ph ph-phone-call text-[18px]" aria-hidden="true"></i> 678 13 70 51</a>
+        <a href="tel:+34678137051" class="flex items-center gap-2 text-sm font-700 text-brandDeep"><svg class="icon text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-phone-call"></use></svg> 678 13 70 51</a>
         <a href="/#cuestionario" class="rounded-full bg-brandDeep px-5 py-2.5 text-sm font-700 text-white shadow-sm transition hover:bg-ink">Pedir presupuesto</a>
       </div>
       <div class="flex items-center gap-2 lg:hidden">
-        <a href="tel:+34678137051" aria-label="Llamar al 678 13 70 51" class="inline-flex h-10 items-center gap-2 rounded-full bg-brandDeep px-4 text-sm font-700 text-white shadow-sm"><i class="ph-fill ph-phone-call text-[18px]" aria-hidden="true"></i> Llamar</a>
+        <a href="tel:+34678137051" aria-label="Llamar al 678 13 70 51" class="inline-flex h-10 items-center gap-2 rounded-full bg-brandDeep px-4 text-sm font-700 text-white shadow-sm"><svg class="icon text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-phone-call"></use></svg> Llamar</a>
         <a href="/#cuestionario" class="hidden h-10 items-center rounded-full border sm:inline-flex border-line bg-white px-4 text-sm font-700 text-ink">Presupuesto</a>
       </div>
     </nav>
@@ -172,13 +177,14 @@ ${ld(schemaFaq)}
           </nav>
           <h1 class="font-display text-4xl font-800 leading-[1.08] tracking-tight md:text-5xl">${esc(s.h1)}</h1>
           <p class="mt-5 max-w-[60ch] text-lg leading-relaxed text-muted">${esc(s.intro)}</p>
+          <p class="mt-3 text-sm text-muted">Actualizado el <time datetime="${HOY}">${HOY_TEXTO}</time></p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="/#cuestionario" class="inline-flex items-center justify-center gap-2 rounded-full bg-brandDeep px-7 py-3.5 font-700 text-white shadow-sm transition hover:bg-ink"><i class="ph ph-clipboard-text text-[20px]" aria-hidden="true"></i> Pedir presupuesto gratis</a>
-            <a href="tel:+34678137051" class="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-3.5 font-700 text-ink transition hover:border-brand hover:text-brandDeep"><i class="ph ph-phone-call text-[20px]" aria-hidden="true"></i> 678 13 70 51</a>
+            <a href="/#cuestionario" class="inline-flex items-center justify-center gap-2 rounded-full bg-brandDeep px-7 py-3.5 font-700 text-white shadow-sm transition hover:bg-ink"><svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-clipboard-text"></use></svg> Pedir presupuesto gratis</a>
+            <a href="tel:+34678137051" class="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-3.5 font-700 text-ink transition hover:border-brand hover:text-brandDeep"><svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-phone-call"></use></svg> 678 13 70 51</a>
           </div>
         </div>
         <div class="lg:col-span-5">
-          <img src="/assets/img/${s.imagen}" alt="${esc(s.imagenAlt)}" width="${w}" height="${h}" class="h-[260px] w-full rounded-[1.5rem] object-cover shadow-xl shadow-brand/10 sm:h-[360px]" fetchpriority="high" />
+          <img src="/assets/img/${s.imagen}" srcset="${srcset(s.imagen, w)}" sizes="${SIZES}" alt="${esc(s.imagenAlt)}" width="${w}" height="${h}" class="h-[260px] w-full rounded-[1.5rem] object-cover shadow-xl shadow-brand/10 sm:h-[360px]" fetchpriority="high" />
         </div>
       </div>
     </section>
@@ -198,6 +204,15 @@ ${extra}
 ${proceso}
         </ol>
       </section>
+${presupuesto ? `
+      <section class="mt-14 rounded-[1.25rem] border border-line bg-white p-6 sm:p-8">
+        <h2 class="font-display text-2xl font-800 tracking-tight">Qué necesitamos para darte presupuesto</h2>
+        <p class="mt-2 text-muted">Si nos envías esto por WhatsApp o en el formulario, te damos un precio más ajustado y más rápido:</p>
+        <ul class="mt-4 space-y-2.5 text-[16px]">
+${presupuesto}
+        </ul>
+        <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 rounded-full bg-[#15803d] px-6 py-3 font-700 text-white transition hover:bg-[#166534]"><svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg> Enviar por WhatsApp</a>
+      </section>` : ''}
 
       <section class="mt-14">
         <h2 class="font-display text-2xl font-800 tracking-tight md:text-3xl">Preguntas frecuentes</h2>
@@ -222,10 +237,10 @@ ${relacionados}
     <section class="bg-brandDeep">
       <div class="mx-auto max-w-7xl px-5 py-14 text-center sm:px-8">
         <h2 class="mx-auto max-w-2xl font-display text-3xl font-800 tracking-tight text-white">Pide tu presupuesto sin compromiso</h2>
-        <p class="mx-auto mt-3 max-w-xl text-white/85">Te respondemos en 24-48h laborables.</p>
+        <p class="mx-auto mt-3 max-w-xl text-white">Te respondemos en 24-48h laborables.</p>
         <div class="mt-7 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <a href="/#cuestionario" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-700 text-brandDeep shadow-sm transition hover:bg-tint"><i class="ph ph-clipboard-text text-[20px]" aria-hidden="true"></i> Pedir presupuesto</a>
-          <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-7 py-3.5 font-700 text-white transition hover:bg-white/20"><i class="ph-fill ph-whatsapp-logo text-[22px]" aria-hidden="true"></i> Escríbenos por WhatsApp</a>
+          <a href="/#cuestionario" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-700 text-brandDeep shadow-sm transition hover:bg-tint"><svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-clipboard-text"></use></svg> Pedir presupuesto</a>
+          <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/60 px-7 py-3.5 font-700 text-white transition hover:bg-white/20"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg> Escríbenos por WhatsApp</a>
         </div>
       </div>
     </section>
@@ -275,8 +290,8 @@ ${otros}
   </footer>
 
   <a href="https://wa.me/34678137051" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
-     class="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#1ebe5d] text-white shadow-lg shadow-black/20 transition hover:scale-105">
-    <i class="ph-fill ph-whatsapp-logo text-[30px]" aria-hidden="true"></i>
+     class="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#15803d] text-white shadow-lg shadow-black/20 transition hover:scale-105">
+    <svg class="icon text-[30px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg>
   </a>
 </body>
 </html>

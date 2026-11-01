@@ -5,13 +5,15 @@
   "description": "Web de RQT Pools - mantenimiento de piscinas en Madrid",
   "scripts": {
     "build:pages": "node scripts/build-servicios.mjs",
-    "build": "node scripts/build-servicios.mjs && npm run build:css",
+    "build:icons": "node scripts/build-icons.mjs",
+    "build": "node scripts/build-servicios.mjs && node scripts/build-icons.mjs && npm run build:css",
     "build:css": "tailwindcss -c tailwind.config.js -i assets/tailwind-input.css -o assets/styles.css --minify",
     "test:unit": "vitest run",
     "test:e2e": "playwright test",
     "test": "vitest run && playwright test"
   },
   "devDependencies": {
+    "@phosphor-icons/core": "^2.1.1",
     "@playwright/test": "^1.49.1",
     "tailwindcss": "^3.4.17",
     "vitest": "^2.1.8"

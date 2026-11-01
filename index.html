@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===== Seguridad (cabeceras vía meta) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net https://unpkg.com; font-src 'self' https://fonts.bunny.net https://unpkg.com; img-src 'self' data:; connect-src 'self' https://caudal-five.vercel.app; form-action 'self' https://wa.me mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://caudal-five.vercel.app; form-action 'self' https://wa.me mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- ===== SEO Primario ===== -->
-  <title>Mantenimiento Integral de Piscinas | RQT Pools</title>
+  <title>RQT Pools | Mantenimiento de Piscinas en Madrid</title>
   <meta name="description" content="Mantenimiento de piscinas en Madrid: cambio de lecho filtrante, instalación de filtros, lonas y cubiertas. Presupuesto sin compromiso. Llama al 678 13 70 51." />
   <meta name="author" content="RQT Pools" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:site_name" content="RQT Pools" />
-  <meta property="og:title" content="Mantenimiento Integral de Piscinas | RQT Pools" />
+  <meta property="og:title" content="RQT Pools | Mantenimiento de Piscinas en Madrid" />
   <meta property="og:description" content="Mantenimiento de piscinas en Madrid: cambio de lecho filtrante, instalación de filtros y lonas. Presupuesto gratis." />
   <meta property="og:url" content="https://rqtpools.com/" />
   <meta property="og:image" content="https://rqtpools.com/assets/img/og.jpg" />
@@ -29,7 +29,7 @@
 
   <!-- ===== Twitter Card ===== -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Mantenimiento Integral de Piscinas | RQT Pools" />
+  <meta name="twitter:title" content="RQT Pools | Mantenimiento de Piscinas en Madrid" />
   <meta name="twitter:description" content="Mantenimiento de piscinas en Madrid: filtros, lonas y reparaciones. Presupuesto gratis. 678 13 70 51." />
   <meta name="twitter:image" content="https://rqtpools.com/assets/img/og.jpg" />
 
@@ -47,15 +47,11 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
   <!-- Preload de la imagen LCP del hero (ahora auto-alojada, acelera el renderizado inicial en móvil) -->
-  <link rel="preload" as="image" fetchpriority="high" href="assets/img/hero.webp" />
+  <link rel="preload" as="image" fetchpriority="high" href="assets/img/hero.webp" imagesrcset="assets/img/hero-720.webp 720w, assets/img/hero.webp 1100w" imagesizes="(min-width: 1024px) 600px, 100vw" />
 
-  <!-- Fuentes via Bunny Fonts (drop-in replacement de Google Fonts, sin tracking, RGPD-friendly) -->
-  <link rel="preconnect" href="https://fonts.bunny.net" crossorigin />
-  <link href="https://fonts.bunny.net/css?family=outfit:400,500,600,700,800|manrope:400,500,600,700&display=swap" rel="stylesheet" />
+  <link rel="preload" href="/assets/fonts/outfit-800.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/manrope-400.woff2" as="font" type="font/woff2" crossorigin />
 
-  <!-- Iconos: Phosphor (con SRI para verificar integridad del recurso) -->
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" integrity="sha384-6p9AefaqUhEVheRlj1mpAkbngHXy9mbYMrIdcIt4Jlc9lOLIablJq3bBsLOjGwZ7" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/fill/style.css" integrity="sha384-pPVoXE8ft+zxKtxIDDI7SfTK6y95NHm4qa+hKEg/hs8VkjW5IP+9/dGOPCbDpUPl" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Tailwind compilado estáticamente (sin CDN: CSP estricta, sin unsafe-eval) -->
   <link rel="stylesheet" href="assets/styles.css" />
@@ -314,7 +310,7 @@
         "name": "¿Cuándo hay que cambiar el lecho filtrante de la piscina?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "El lecho filtrante (arena, vidrio o cristal) suele cambiarse cada 4-6 años, dependiendo del uso de la piscina y de la calidad del agua. Lo revisamos sin compromiso."
+          "text": "Depende de la carga: la arena de sílex se cambia cada 3-5 años y el vidrio filtrante cada 6-10 años, según el uso de la piscina. Lo revisamos sin compromiso."
         }
       },
       {
@@ -390,7 +386,7 @@
         <a href="#zonas"         class="text-sm font-600 text-muted transition hover:text-ink">Zonas</a>
         <a href="#faq"           class="text-sm font-600 text-muted transition hover:text-ink">Preguntas</a>
         <a href="tel:+34678137051" class="flex items-center gap-2 text-sm font-700 text-brandDeep">
-          <i class="ph ph-phone-call text-[18px]"></i> 678 13 70 51
+          <svg class="icon text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-phone-call"></use></svg> 678 13 70 51
         </a>
         <a href="#cuestionario" class="rounded-full bg-brandDeep px-5 py-2.5 text-sm font-700 text-white shadow-sm transition hover:bg-ink active:scale-[.98]">
           Pedir presupuesto
@@ -399,10 +395,10 @@
 
       <div class="flex items-center gap-2 lg:hidden">
         <a href="tel:+34678137051" aria-label="Llamar al 678 13 70 51" class="inline-flex h-10 items-center gap-2 rounded-full bg-brandDeep px-4 text-sm font-700 text-white shadow-sm transition active:scale-[.98]">
-          <i class="ph-fill ph-phone-call text-[18px]" aria-hidden="true"></i> Llamar
+          <svg class="icon text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-phone-call"></use></svg> Llamar
         </a>
         <button id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobileMenu" class="grid h-10 w-10 place-items-center rounded-lg border border-line text-ink">
-          <i class="ph ph-list text-[22px]" aria-hidden="true"></i>
+          <svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-list"></use></svg>
         </button>
       </div>
     </nav>
@@ -426,7 +422,7 @@
       <div class="mx-auto grid max-w-7xl items-center gap-10 px-5 pb-16 pt-12 sm:px-8 lg:grid-cols-12 lg:gap-12 lg:pb-24 lg:pt-20">
         <div class="lg:col-span-6">
           <p class="mb-5 inline-flex items-center gap-2 rounded-full border border-line bg-white px-4 py-1.5 text-xs font-700 uppercase tracking-[0.14em] text-brandDeep">
-            <i class="ph-fill ph-map-pin" aria-hidden="true"></i> RQT Pools · Piscinas en Madrid
+            <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-map-pin"></use></svg> RQT Pools · Piscinas en Madrid
           </p>
           <h1 class="font-display text-4xl font-800 leading-[1.05] tracking-tight md:text-5xl lg:text-6xl">
             <span class="sr-only">RQT Pools — </span>El agua perfecta,<br class="hidden sm:block" /> sin complicaciones.
@@ -436,16 +432,16 @@
           </p>
           <div class="mt-8 flex flex-col gap-3 sm:flex-row">
             <a href="#cuestionario" class="inline-flex items-center justify-center gap-2 rounded-full bg-brandDeep px-7 py-3.5 font-700 text-white shadow-sm transition hover:bg-ink active:scale-[.98]">
-              <i class="ph ph-clipboard-text text-[20px]"></i> Pedir presupuesto
+              <svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-clipboard-text"></use></svg> Pedir presupuesto
             </a>
             <a href="#servicios" class="inline-flex items-center justify-center gap-2 rounded-full border border-line bg-white px-7 py-3.5 font-700 text-ink transition hover:border-brand hover:text-brandDeep active:scale-[.98]">
               Ver servicios
             </a>
           </div>
           <div class="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-600 text-muted">
-            <span class="inline-flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand text-[18px]"></i> Respuesta en 24-48h</span>
-            <span class="inline-flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand text-[18px]"></i> Técnicos certificados</span>
-            <span class="inline-flex items-center gap-2"><i class="ph-fill ph-check-circle text-brand text-[18px]"></i> Sin permanencia</span>
+            <span class="inline-flex items-center gap-2"><svg class="icon text-brand text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-check-circle"></use></svg> Respuesta en 24-48h</span>
+            <span class="inline-flex items-center gap-2"><svg class="icon text-brand text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-check-circle"></use></svg> Técnicos certificados</span>
+            <span class="inline-flex items-center gap-2"><svg class="icon text-brand text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-check-circle"></use></svg> Sin permanencia</span>
           </div>
         </div>
 
@@ -453,6 +449,8 @@
           <div class="relative overflow-hidden rounded-[1.75rem] border border-white/60 shadow-2xl shadow-brand/10">
             <img
               src="assets/img/hero.webp"
+              srcset="assets/img/hero-720.webp 720w, assets/img/hero.webp 1100w"
+              sizes="(min-width: 1024px) 600px, 100vw"
               alt="Piscina con mantenimiento profesional de RQT Pools - servicio integral de piscinas en Madrid"
               width="1100" height="734" class="h-[340px] w-full object-cover sm:h-[460px] lg:h-[560px]" loading="eager" fetchpriority="high" />
             <div class="absolute bottom-4 left-4 right-4 flex items-center justify-between rounded-2xl bg-white/85 px-5 py-3.5 backdrop-blur-md">
@@ -460,7 +458,7 @@
                 <p class="font-display text-sm font-700">Agua cristalina todo el año</p>
                 <p class="text-xs text-muted">Control químico y limpieza profesional</p>
               </div>
-              <span class="grid h-10 w-10 place-items-center rounded-full bg-brand text-white"><i class="ph-fill ph-sparkle text-[20px]"></i></span>
+              <span class="grid h-10 w-10 place-items-center rounded-full bg-brand text-white"><svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-sparkle"></use></svg></span>
             </div>
           </div>
         </div>
@@ -479,75 +477,75 @@
 
         <!-- A: Mantenimiento integral - IMAGEN GRANDE -->
         <article class="group relative focus-within:ring-2 focus-within:ring-brand col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2 lg:row-span-2">
-          <img src="assets/img/servicio-particular.webp"
+          <img src="assets/img/servicio-particular.webp" srcset="assets/img/servicio-particular-600.webp 600w, assets/img/servicio-particular.webp 900w" sizes="(min-width: 1024px) 620px, 100vw" width="900" height="600"
                alt="Mantenimiento integral de piscina particular con agua cristalina" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/30 to-transparent"></div>
           <div class="relative flex h-full flex-col justify-end p-6">
-            <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white backdrop-blur-sm"><i class="ph-fill ph-broom text-[22px]"></i></span>
+            <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white backdrop-blur-sm"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-broom"></use></svg></span>
             <h3 class="font-display text-xl font-700 text-white"><a href="servicios/mantenimiento-piscinas-madrid/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Mantenimiento integral de piscinas</a></h3>
-            <p class="mt-1.5 max-w-sm text-sm text-white/85">Limpieza semanal del vaso, skimmers, fondo y línea de flotación. Revisión completa en cada visita.</p>
+            <p class="mt-1.5 max-w-sm text-sm text-white">Limpieza semanal del vaso, skimmers, fondo y línea de flotación. Revisión completa en cada visita.</p>
           </div>
         </article>
 
         <!-- B: Tratamiento del agua - AQUA TINT -->
         <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand col-span-1 rounded-[1.25rem] border border-brand/15 bg-tint p-6 sm:col-span-2">
-          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-brand text-white"><i class="ph-fill ph-flask text-[22px]"></i></span>
+          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-brand text-white"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-flask"></use></svg></span>
           <h3 class="font-display text-xl font-700"><a href="servicios/tratamiento-agua-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Tratamiento y equilibrio del agua</a></h3>
           <p class="mt-1.5 text-sm text-muted">Análisis de pH, cloro y alcalinidad. Agua segura, transparente y sin algas.</p>
         </article>
 
         <!-- C: Cambio de lecho filtrante - BLANCO (SEO) -->
         <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
-          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-arrows-clockwise text-[22px]"></i></span>
+          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-arrows-clockwise"></use></svg></span>
           <h3 class="font-display text-lg font-700"><a href="servicios/cambio-lecho-filtrante/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Cambio de lecho filtrante</a></h3>
           <p class="mt-1.5 text-sm text-muted">Sustitución de arena, vidrio o cristal del filtro.</p>
         </article>
 
         <!-- D: Instalación de filtros - BLANCO (SEO) -->
         <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
-          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-funnel text-[22px]"></i></span>
+          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-funnel"></use></svg></span>
           <h3 class="font-display text-lg font-700"><a href="servicios/instalacion-filtros-depuradoras/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Instalación de filtros</a></h3>
           <p class="mt-1.5 text-sm text-muted">Bombas, depuradoras y sistemas de filtración.</p>
         </article>
 
         <!-- E: Lonas y cubiertas - NAVY (SEO) -->
         <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand col-span-1 rounded-[1.25rem] bg-ink p-6 text-white sm:col-span-2">
-          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white"><i class="ph-fill ph-umbrella text-[22px]"></i></span>
+          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-umbrella"></use></svg></span>
           <h3 class="font-display text-xl font-700"><a href="servicios/lonas-cubiertas-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Lonas y cubiertas</a></h3>
           <p class="mt-1.5 text-sm text-white/80">Lonas de invierno, cubiertas de verano y mantas térmicas a medida.</p>
         </article>
 
         <!-- F: Reparación de equipos - BLANCO -->
         <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
-          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-wrench text-[22px]"></i></span>
+          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-wrench"></use></svg></span>
           <h3 class="font-display text-lg font-700"><a href="servicios/reparacion-equipos-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Reparación de equipos</a></h3>
           <p class="mt-1.5 text-sm text-muted">Bombas, depuradoras y clorador salino.</p>
         </article>
 
         <!-- G: Detección de fugas - BLANCO -->
         <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand rounded-[1.25rem] border border-line bg-white p-6">
-          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><i class="ph ph-magnifying-glass text-[22px]"></i></span>
+          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-tint text-brandDeep"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-magnifying-glass"></use></svg></span>
           <h3 class="font-display text-lg font-700"><a href="servicios/deteccion-fugas-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Detección de fugas</a></h3>
           <p class="mt-1.5 text-sm text-muted">Localizamos y reparamos pérdidas de agua.</p>
         </article>
 
         <!-- H: Comunidades y hoteles - IMAGEN -->
         <article class="group relative focus-within:ring-2 focus-within:ring-brand col-span-1 overflow-hidden rounded-[1.25rem] sm:col-span-2">
-          <img src="assets/img/servicio-comunidad.webp"
+          <img src="assets/img/servicio-comunidad.webp" srcset="assets/img/servicio-comunidad-600.webp 600w, assets/img/servicio-comunidad.webp 900w" sizes="(min-width: 1024px) 620px, 100vw" width="900" height="675"
                alt="Mantenimiento de piscinas para comunidades de vecinos y hoteles" class="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-105" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent"></div>
           <div class="relative flex h-full flex-col justify-end p-6">
-            <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white backdrop-blur-sm"><i class="ph-fill ph-buildings text-[22px]"></i></span>
+            <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white backdrop-blur-sm"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-buildings"></use></svg></span>
             <h3 class="font-display text-xl font-700 text-white"><a href="servicios/mantenimiento-piscinas-comunidades/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Comunidades y hoteles</a></h3>
-            <p class="mt-1.5 text-sm text-white/85">Contratos de mantenimiento para piscinas de uso público y comunitario.</p>
+            <p class="mt-1.5 text-sm text-white">Contratos de mantenimiento para piscinas de uso público y comunitario.</p>
           </div>
         </article>
 
         <!-- I: Apertura y cierre - TEAL SOLIDO -->
         <article class="relative transition hover:-translate-y-0.5 hover:shadow-lg focus-within:ring-2 focus-within:ring-brand col-span-1 rounded-[1.25rem] bg-brandDeep p-6 text-white sm:col-span-2">
-          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white"><i class="ph-fill ph-sun text-[22px]"></i></span>
+          <span class="mb-3 grid h-11 w-11 place-items-center rounded-xl bg-white/15 text-white"><svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-sun"></use></svg></span>
           <h3 class="font-display text-xl font-700"><a href="servicios/apertura-cierre-temporada-piscina/" class="after:absolute after:inset-0 after:content-[''] hover:underline">Apertura y cierre de temporada</a></h3>
-          <p class="mt-1.5 text-sm text-white/85">Puesta a punto en primavera e invernaje en otoño. Tu piscina lista en cada estación.</p>
+          <p class="mt-1.5 text-sm text-white">Puesta a punto en primavera e invernaje en otoño. Tu piscina lista en cada estación.</p>
         </article>
 
       </div>
@@ -563,17 +561,17 @@
 
         <div class="reveal grid gap-px overflow-hidden rounded-[1.25rem] border border-line bg-line md:grid-cols-3">
           <div class="bg-white p-7">
-            <span class="font-display text-5xl font-800 text-brand/25">01</span>
+            <span class="font-display text-5xl font-800 text-brandDeep/70">01</span>
             <h3 class="mt-4 font-display text-xl font-700">Cuéntanos sobre tu piscina</h3>
             <p class="mt-2 text-sm text-muted">Rellena el cuestionario en menos de un minuto. Sin llamadas ni esperas.</p>
           </div>
           <div class="bg-white p-7">
-            <span class="font-display text-5xl font-800 text-brand/25">02</span>
+            <span class="font-display text-5xl font-800 text-brandDeep/70">02</span>
             <h3 class="mt-4 font-display text-xl font-700">Visita y presupuesto</h3>
             <p class="mt-2 text-sm text-muted">Revisamos tu piscina y te damos un precio claro, sin sorpresas ni compromiso.</p>
           </div>
           <div class="bg-white p-7">
-            <span class="font-display text-5xl font-800 text-brand/25">03</span>
+            <span class="font-display text-5xl font-800 text-brandDeep/70">03</span>
             <h3 class="mt-4 font-display text-xl font-700">Mantenimiento continuo</h3>
             <p class="mt-2 text-sm text-muted">Nos ocupamos de todo durante el año. Tú solo te preocupas de disfrutar.</p>
           </div>
@@ -585,7 +583,7 @@
     <section class="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-24">
       <div class="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
         <div class="reveal order-2 overflow-hidden rounded-[1.5rem] border border-line shadow-xl shadow-brand/5 lg:order-1">
-          <img src="assets/img/tecnicos.webp"
+          <img src="assets/img/tecnicos.webp" srcset="assets/img/tecnicos-600.webp 600w, assets/img/tecnicos.webp 1000w" sizes="(min-width: 1024px) 600px, 100vw" width="1000" height="667"
                alt="Piscina cuidada por técnicos profesionales de mantenimiento de piscinas RQT Pools" class="h-[300px] w-full object-cover sm:h-[420px]" loading="lazy" />
         </div>
         <div class="reveal order-1 lg:order-2">
@@ -640,12 +638,12 @@
             <div class="quiz-step" data-step="1">
               <h3 class="mb-4 font-display text-lg font-700">¿Qué necesitas?</h3>
               <div class="grid gap-3 sm:grid-cols-2">
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Mantenimiento periódico" aria-pressed="false"><i class="ph ph-broom text-brandDeep text-[20px]"></i> Mantenimiento periódico</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Tratamiento del agua" aria-pressed="false"><i class="ph ph-flask text-brandDeep text-[20px]"></i> Tratamiento del agua</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Reparación de equipos" aria-pressed="false"><i class="ph ph-wrench text-brandDeep text-[20px]"></i> Reparación de equipos</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Apertura o cierre de temporada" aria-pressed="false"><i class="ph ph-sun text-brandDeep text-[20px]"></i> Apertura o cierre</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Detección de fugas" aria-pressed="false"><i class="ph ph-magnifying-glass text-brandDeep text-[20px]"></i> Detección de fugas</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Otro / no estoy seguro" aria-pressed="false"><i class="ph ph-chat-circle-dots text-brandDeep text-[20px]"></i> Otro / no lo sé</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Mantenimiento periódico" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-broom"></use></svg> Mantenimiento periódico</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Tratamiento del agua" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-flask"></use></svg> Tratamiento del agua</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Reparación de equipos" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-wrench"></use></svg> Reparación de equipos</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Apertura o cierre de temporada" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-sun"></use></svg> Apertura o cierre</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Detección de fugas" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-magnifying-glass"></use></svg> Detección de fugas</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="servicio" data-value="Otro / no estoy seguro" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-chat-circle-dots"></use></svg> Otro / no lo sé</button>
               </div>
             </div>
 
@@ -653,11 +651,11 @@
             <div class="quiz-step hidden" data-step="2">
               <h3 class="mb-4 font-display text-lg font-700">¿Qué tipo de piscina es?</h3>
               <div class="grid gap-3 sm:grid-cols-2">
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Particular enterrada" aria-pressed="false"><i class="ph ph-house text-brandDeep text-[20px]"></i> Particular enterrada</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Particular desmontable" aria-pressed="false"><i class="ph ph-circle-half text-brandDeep text-[20px]"></i> Particular desmontable</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Comunidad de vecinos" aria-pressed="false"><i class="ph ph-buildings text-brandDeep text-[20px]"></i> Comunidad de vecinos</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Hotel o negocio" aria-pressed="false"><i class="ph ph-storefront text-brandDeep text-[20px]"></i> Hotel o negocio</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand sm:col-span-2" data-group="tipo" data-value="Spa o jacuzzi" aria-pressed="false"><i class="ph ph-bathtub text-brandDeep text-[20px]"></i> Spa o jacuzzi</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Particular enterrada" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-house"></use></svg> Particular enterrada</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Particular desmontable" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-circle-half"></use></svg> Particular desmontable</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Comunidad de vecinos" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-buildings"></use></svg> Comunidad de vecinos</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="tipo" data-value="Hotel o negocio" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-storefront"></use></svg> Hotel o negocio</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand sm:col-span-2" data-group="tipo" data-value="Spa o jacuzzi" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-bathtub"></use></svg> Spa o jacuzzi</button>
               </div>
             </div>
 
@@ -665,10 +663,10 @@
             <div class="quiz-step hidden" data-step="3">
               <h3 class="mb-4 font-display text-lg font-700">¿Cuándo lo necesitas?</h3>
               <div class="grid gap-3 sm:grid-cols-2">
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Lo antes posible" aria-pressed="false"><i class="ph ph-lightning text-brandDeep text-[20px]"></i> Lo antes posible</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Esta semana" aria-pressed="false"><i class="ph ph-calendar-check text-brandDeep text-[20px]"></i> Esta semana</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Este mes" aria-pressed="false"><i class="ph ph-calendar-dots text-brandDeep text-[20px]"></i> Este mes</button>
-                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Solo quiero información" aria-pressed="false"><i class="ph ph-info text-brandDeep text-[20px]"></i> Solo información</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Lo antes posible" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-lightning"></use></svg> Lo antes posible</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Esta semana" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-calendar-check"></use></svg> Esta semana</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Este mes" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-calendar-dots"></use></svg> Este mes</button>
+                <button type="button" class="opt flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 text-left font-600 transition hover:border-brand" data-group="cuando" data-value="Solo quiero información" aria-pressed="false"><svg class="icon text-brandDeep text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-info"></use></svg> Solo información</button>
               </div>
             </div>
 
@@ -677,22 +675,22 @@
               <h3 class="mb-4 font-display text-lg font-700">¿Cómo te contactamos?</h3>
               <div class="grid gap-4">
                 <div>
-                  <label for="q-nombre" class="mb-1.5 block text-sm font-600">Nombre <span class="text-brand">*</span></label>
+                  <label for="q-nombre" class="mb-1.5 block text-sm font-600">Nombre <span class="text-brandDeep">*</span></label>
                   <input id="q-nombre" type="text" autocomplete="name" aria-describedby="err-nombre" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Tu nombre" />
                   <p id="err-nombre" class="mt-1 hidden text-sm font-600 text-red-600" data-err="nombre">Escribe tu nombre.</p>
                 </div>
                 <div>
-                  <label for="q-localidad" class="mb-1.5 block text-sm font-600">Localidad <span class="text-brand">*</span></label>
+                  <label for="q-localidad" class="mb-1.5 block text-sm font-600">Localidad <span class="text-brandDeep">*</span></label>
                   <input id="q-localidad" type="text" autocomplete="address-level2" aria-describedby="err-localidad" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Tu ciudad o pueblo" />
                   <p id="err-localidad" class="mt-1 hidden text-sm font-600 text-red-600" data-err="localidad">Indica tu localidad.</p>
                 </div>
                 <div>
-                  <label for="q-telefono" class="mb-1.5 block text-sm font-600">Teléfono <span class="text-brand">*</span></label>
+                  <label for="q-telefono" class="mb-1.5 block text-sm font-600">Teléfono <span class="text-brandDeep">*</span></label>
                   <input id="q-telefono" type="tel" inputmode="tel" autocomplete="tel" aria-describedby="err-telefono" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="Ej. 600 123 456" />
                   <p id="err-telefono" class="mt-1 hidden text-sm font-600 text-red-600" data-err="telefono">Indica un teléfono válido (al menos 9 cifras).</p>
                 </div>
                 <div>
-                  <label for="q-email" class="mb-1.5 block text-sm font-600">Correo <span class="text-brand">*</span></label>
+                  <label for="q-email" class="mb-1.5 block text-sm font-600">Correo <span class="text-brandDeep">*</span></label>
                   <input id="q-email" type="email" inputmode="email" autocomplete="email" aria-describedby="err-email" class="w-full rounded-xl border border-line bg-white px-4 py-3 text-ink outline-none transition placeholder:text-muted/60 focus:border-brand focus:ring-2 focus:ring-brand/30" placeholder="tucorreo@ejemplo.com" />
                   <p id="err-email" class="mt-1 hidden text-sm font-600 text-red-600" data-err="email">Introduce un correo válido.</p>
                 </div>
@@ -711,7 +709,7 @@
                 <div class="space-y-2 rounded-xl border border-line bg-page p-4">
                   <label class="flex items-start gap-2.5 text-sm text-ink">
                     <input type="checkbox" id="q-privacy" aria-describedby="err-privacy" class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brandDeep" />
-                    <span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" class="font-700 text-brandDeep underline">política de privacidad</a>. <span class="text-brand">*</span></span>
+                    <span>He leído y acepto la <a href="politica-privacidad.html" target="_blank" class="font-700 text-brandDeep underline">política de privacidad</a>. <span class="text-brandDeep">*</span></span>
                   </label>
                   <label class="flex items-start gap-2.5 text-sm text-muted">
                     <input type="checkbox" id="q-marketing" class="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-brandDeep" />
@@ -721,11 +719,11 @@
                 </div>
 
                 <div class="mt-2 grid gap-3 sm:grid-cols-2">
-                  <button type="button" id="send-wa" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#1ebe5d] px-6 py-3.5 font-700 text-white shadow-sm transition hover:bg-[#179c4c] active:scale-[.98]">
-                    <i class="ph-fill ph-whatsapp-logo text-[22px]"></i> Enviar por WhatsApp
+                  <button type="button" id="send-wa" class="inline-flex items-center justify-center gap-2 rounded-full bg-[#15803d] px-6 py-3.5 font-700 text-white shadow-sm transition hover:bg-[#166534] active:scale-[.98]">
+                    <svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg> Enviar por WhatsApp
                   </button>
                   <button type="button" id="send-email" class="inline-flex items-center justify-center gap-2 rounded-full bg-brandDeep px-6 py-3.5 font-700 text-white shadow-sm transition hover:bg-ink active:scale-[.98]">
-                    <i class="ph-fill ph-envelope-simple text-[22px]"></i> Enviar por correo
+                    <svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-envelope-simple"></use></svg> Enviar por correo
                   </button>
                 </div>
                 <p class="text-center text-xs text-muted">Te respondemos en menos de 24-48h laborables.</p>
@@ -734,22 +732,22 @@
 
             <!-- Hecho -->
             <div class="quiz-step hidden text-center" data-step="done">
-              <span class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full bg-tint text-brand"><i class="ph-fill ph-check-circle text-[40px]"></i></span>
+              <span class="mx-auto mb-4 grid h-16 w-16 place-items-center rounded-full bg-tint text-brand"><svg class="icon text-[40px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-check-circle"></use></svg></span>
               <h3 class="font-display text-2xl font-800">¡Solicitud preparada!</h3>
               <p class="mx-auto mt-2 max-w-md text-muted">Se ha abierto tu app con el mensaje listo. Si no se abrió, escríbenos directamente:</p>
               <div class="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
-                <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-[#1ebe5d] px-6 py-3 font-700 text-white"><i class="ph-fill ph-whatsapp-logo text-[20px]"></i> WhatsApp</a>
-                <a href="tel:+34678137051" class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3 font-700 text-brandDeep"><i class="ph ph-phone-call text-[20px]"></i> 678 13 70 51</a>
+                <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-[#15803d] px-6 py-3 font-700 text-white"><svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg> WhatsApp</a>
+                <a href="tel:+34678137051" class="inline-flex items-center gap-2 rounded-full border border-line bg-white px-6 py-3 font-700 text-brandDeep"><svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-phone-call"></use></svg> 678 13 70 51</a>
               </div>
               <button type="button" id="quiz-restart" class="mx-auto mt-6 inline-flex items-center gap-2 text-sm font-700 text-brandDeep transition hover:text-ink">
-                <i class="ph ph-arrow-counter-clockwise text-[18px]"></i> Rellenar otra solicitud
+                <svg class="icon text-[18px]" aria-hidden="true"><use href="/assets/icons.svg#ph-arrow-counter-clockwise"></use></svg> Rellenar otra solicitud
               </button>
             </div>
 
             <!-- Navegación -->
             <div id="quizNav" class="mt-7 flex items-center justify-between">
               <button type="button" id="quizBack" class="invisible inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 font-600 text-muted transition hover:text-ink">
-                <i class="ph ph-arrow-left"></i> Atrás
+                <svg class="icon" aria-hidden="true"><use href="/assets/icons.svg#ph-arrow-left"></use></svg> Atrás
               </button>
               <p class="text-xs text-muted">Selecciona una opción para continuar</p>
             </div>
@@ -768,12 +766,12 @@
           <h2 class="font-display text-3xl font-800 tracking-tight md:text-4xl">Mantenimiento de piscinas en Madrid y alrededores</h2>
           <p class="mt-3 max-w-prose text-muted">Trabajamos en Madrid capital y en los municipios de la Comunidad de Madrid. Si tu localidad no aparece en la lista, pregúntanos: probablemente también llegamos.</p>
           <ul class="mt-6 grid grid-cols-2 gap-x-6 gap-y-3 text-[15px] font-600">
-            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Madrid capital</li>
-            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Pozuelo de Alarcón</li>
-            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Las Rozas de Madrid</li>
-            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Boadilla del Monte</li>
-            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Majadahonda</li>
-            <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-brandDeep" aria-hidden="true"></i> Alcobendas</li>
+            <li class="flex items-center gap-2"><svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-map-pin"></use></svg> Madrid capital</li>
+            <li class="flex items-center gap-2"><svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-map-pin"></use></svg> Pozuelo de Alarcón</li>
+            <li class="flex items-center gap-2"><svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-map-pin"></use></svg> Las Rozas de Madrid</li>
+            <li class="flex items-center gap-2"><svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-map-pin"></use></svg> Boadilla del Monte</li>
+            <li class="flex items-center gap-2"><svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-map-pin"></use></svg> Majadahonda</li>
+            <li class="flex items-center gap-2"><svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-map-pin"></use></svg> Alcobendas</li>
           </ul>
         </div>
 
@@ -817,35 +815,35 @@
         </div>
         <div class="reveal divide-y divide-line rounded-[1.25rem] border border-line">
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Cada cuánto hay que mantener una piscina? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Cada cuánto hay que mantener una piscina? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">En temporada de baño lo habitual es una visita semanal. Fuera de temporada basta con un mantenimiento más espaciado para conservar el agua en buen estado.</p>
           </details>
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Cuándo hay que cambiar el lecho filtrante de la piscina? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
-            <p class="mt-3 text-muted">El lecho filtrante (arena, vidrio o cristal) suele cambiarse cada 4-6 años, dependiendo del uso de la piscina y de la calidad del agua. Lo revisamos sin compromiso.</p>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Cuándo hay que cambiar el lecho filtrante de la piscina? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
+            <p class="mt-3 text-muted">Depende de la carga: la arena de sílex se cambia cada 3-5 años y el vidrio filtrante cada 6-10 años, según el uso de la piscina. Lo revisamos sin compromiso.</p>
           </details>
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Instaláis depuradoras y filtros nuevos? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Instaláis depuradoras y filtros nuevos? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">Sí, instalamos bombas, depuradoras y sistemas de filtración nuevos, además de sustituir equipos antiguos por modelos más eficientes.</p>
           </details>
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Suministráis lonas y cubiertas para piscina? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Suministráis lonas y cubiertas para piscina? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">Sí. Ofrecemos lonas de invierno, cubiertas de verano y mantas térmicas, hechas a medida e instaladas por nuestro equipo.</p>
           </details>
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Trabajáis con comunidades y hoteles? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Trabajáis con comunidades y hoteles? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">Sí. Ofrecemos contratos de mantenimiento para piscinas comunitarias y de uso público, cumpliendo la normativa sanitaria vigente.</p>
           </details>
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿En qué zonas de Madrid trabajáis? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿En qué zonas de Madrid trabajáis? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">Damos servicio en Madrid capital y municipios de la Comunidad como Pozuelo, Las Rozas, Boadilla, Majadahonda, Alcobendas y alrededores.</p>
           </details>
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Cuánto cuesta el mantenimiento de una piscina? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿Cuánto cuesta el mantenimiento de una piscina? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">Depende del tamaño de la piscina y la frecuencia. Por eso te damos un presupuesto cerrado y sin compromiso tras conocer tu caso.</p>
           </details>
           <details class="group p-5 sm:p-6">
-            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿En cuánto tiempo respondéis? <i class="ph ph-caret-down faq-chevron text-brand"></i></summary>
+            <summary class="flex items-center justify-between gap-4 font-display text-lg font-700">¿En cuánto tiempo respondéis? <svg class="icon faq-chevron text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-caret-down"></use></svg></summary>
             <p class="mt-3 text-muted">Normalmente en 24-48h laborables. Si es urgente, márcalo en el cuestionario o escríbenos por WhatsApp.</p>
           </details>
         </div>
@@ -854,18 +852,18 @@
 
     <!-- ========================= CTA BAND ========================= -->
     <section class="relative overflow-hidden">
-      <img src="assets/img/cta-atardecer.webp"
+      <img src="assets/img/cta-atardecer.webp" srcset="assets/img/cta-atardecer-800.webp 800w, assets/img/cta-atardecer.webp 1600w" sizes="100vw" width="1600" height="1067"
            alt="Piscina con mantenimiento profesional al atardecer" class="absolute inset-0 h-full w-full object-cover" loading="lazy" />
       <div class="absolute inset-0 bg-brandDeep/85"></div>
       <div class="relative mx-auto max-w-7xl px-5 py-16 text-center sm:px-8 lg:py-24">
         <h2 class="mx-auto max-w-2xl font-display text-3xl font-800 tracking-tight text-white md:text-4xl">Disfruta de tu piscina, nosotros la cuidamos</h2>
-        <p class="mx-auto mt-3 max-w-xl text-white/85">Pide tu presupuesto sin compromiso hoy mismo.</p>
+        <p class="mx-auto mt-3 max-w-xl text-white">Pide tu presupuesto sin compromiso hoy mismo.</p>
         <div class="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a href="#cuestionario" class="inline-flex items-center justify-center gap-2 rounded-full bg-white px-7 py-3.5 font-700 text-brandDeep shadow-sm transition hover:bg-tint active:scale-[.98]">
-            <i class="ph ph-clipboard-text text-[20px]"></i> Pedir presupuesto
+            <svg class="icon text-[20px]" aria-hidden="true"><use href="/assets/icons.svg#ph-clipboard-text"></use></svg> Pedir presupuesto
           </a>
-          <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-7 py-3.5 font-700 text-white backdrop-blur-sm transition hover:bg-white/20 active:scale-[.98]">
-            <i class="ph-fill ph-whatsapp-logo text-[22px]"></i> Escríbenos por WhatsApp
+          <a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center justify-center gap-2 rounded-full border border-white/60 px-7 py-3.5 font-700 text-white backdrop-blur-sm transition hover:bg-white/20 active:scale-[.98]">
+            <svg class="icon text-[22px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg> Escríbenos por WhatsApp
           </a>
         </div>
       </div>
@@ -906,18 +904,18 @@
       <div>
         <p class="mb-4 font-display text-sm font-700 uppercase tracking-wide text-white">Contacto</p>
         <ul class="space-y-3 text-sm">
-          <li><a href="tel:+34678137051" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph ph-phone text-brand"></i> +34 678 13 70 51</a></li>
-          <li><a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph-fill ph-whatsapp-logo text-brand"></i> Escríbenos por WhatsApp</a></li>
-          <li><a href="mailto:hola@rqtpools.com" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph ph-envelope-simple text-brand"></i> hola@rqtpools.com</a></li>
+          <li><a href="tel:+34678137051" class="inline-flex items-center gap-2 transition hover:text-white"><svg class="icon text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-phone"></use></svg> +34 678 13 70 51</a></li>
+          <li><a href="https://wa.me/34678137051" target="_blank" rel="noopener" class="inline-flex items-center gap-2 transition hover:text-white"><svg class="icon text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg> Escríbenos por WhatsApp</a></li>
+          <li><a href="mailto:hola@rqtpools.com" class="inline-flex items-center gap-2 transition hover:text-white"><svg class="icon text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-envelope-simple"></use></svg> hola@rqtpools.com</a></li>
         </ul>
       </div>
 
       <div>
         <p class="mb-4 font-display text-sm font-700 uppercase tracking-wide text-white">Información</p>
         <ul class="space-y-3 text-sm">
-          <li class="inline-flex items-center gap-2"><i class="ph ph-clock text-brand"></i> Lun a Sáb, 8:00 - 20:00</li>
-          <li><a href="https://maps.app.goo.gl/B9zUvSU6G2Jq1FPB7" target="_blank" rel="noopener" class="inline-flex items-center gap-2 transition hover:text-white"><i class="ph ph-map-pin text-brand" aria-hidden="true"></i> Ver en Google Maps</a></li>
-          <li><a href="#cuestionario" class="inline-flex items-center gap-2 font-700 text-white"><i class="ph ph-clipboard-text text-brand"></i> Pedir presupuesto</a></li>
+          <li class="inline-flex items-center gap-2"><svg class="icon text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-clock"></use></svg> Lun a Sáb, 8:00 - 20:00</li>
+          <li><a href="https://maps.app.goo.gl/B9zUvSU6G2Jq1FPB7" target="_blank" rel="noopener" class="inline-flex items-center gap-2 transition hover:text-white"><svg class="icon text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-map-pin"></use></svg> Ver en Google Maps</a></li>
+          <li><a href="#cuestionario" class="inline-flex items-center gap-2 font-700 text-white"><svg class="icon text-brand" aria-hidden="true"><use href="/assets/icons.svg#ph-clipboard-text"></use></svg> Pedir presupuesto</a></li>
         </ul>
       </div>
     </div>
@@ -935,8 +933,8 @@
 
   <!-- WhatsApp flotante -->
   <a href="https://wa.me/34678137051" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp"
-     class="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#1ebe5d] text-white shadow-lg shadow-black/20 transition hover:scale-105 active:scale-95">
-    <i class="ph-fill ph-whatsapp-logo text-[30px]"></i>
+     class="fixed bottom-5 right-5 z-40 grid h-14 w-14 place-items-center rounded-full bg-[#15803d] text-white shadow-lg shadow-black/20 transition hover:scale-105 active:scale-95">
+    <svg class="icon text-[30px]" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-whatsapp-logo"></use></svg>
   </a>
 
   <!-- ===== Banner de Cookies RGPD ===== -->
@@ -944,9 +942,9 @@
        class="fixed bottom-0 left-0 right-0 z-50 hidden border-t border-line bg-white shadow-2xl">
     <div class="mx-auto flex max-w-6xl flex-col gap-4 px-5 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-8">
       <p class="text-sm leading-relaxed text-muted">
-        <i class="ph-fill ph-cookie text-brandDeep"></i>
+        <svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-fill-cookie"></use></svg>
         Utilizamos cookies técnicas necesarias para que el sitio funcione. No usamos cookies de seguimiento ni publicidad.
-        <a href="politica-cookies.html" class="font-700 text-brandDeep underline">Más información</a>
+        <a href="politica-cookies.html" class="font-700 text-brandDeep underline">Más información sobre cookies</a>
       </p>
       <div class="flex gap-2">
         <button id="cookie-reject" class="rounded-full border border-line bg-white px-5 py-2.5 text-sm font-700 text-ink transition hover:border-brand active:scale-[.98]">Rechazar</button>
