@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <!-- ===== Seguridad (cabeceras vía meta) ===== -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self' https://caudal-five.vercel.app; form-action 'self' https://wa.me mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'; form-action 'self' https://wa.me mailto:; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- ===== SEO Primario ===== -->
@@ -1056,39 +1056,8 @@
       return QuizLogic.buildMessage(readForm());
     }
 
-    // ============================================================
-    //  CAUDAL - Envía el lead también al tablero Kanban (RQT Pools)
-    //  Aparece como tarjeta en la columna "Pendiente".
-    // ============================================================
-    const CAUDAL_ENDPOINT = 'https://caudal-five.vercel.app/api/requests';
-    const CAUDAL_TOKEN = 'REDACTED';
-
-    function saveToCaudal(canal) {
-      const f = readForm();
-      const title = 'Presupuesto: ' + (f.servicio || 'RQT Pools') +
-        (f.tipo ? ' (' + f.tipo + ')' : '');
-      try {
-        fetch(CAUDAL_ENDPOINT, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            token: CAUDAL_TOKEN,
-            title: title,
-            name: f.nombre + (f.localidad ? ' (' + f.localidad + ')' : ''),
-            email: f.email || '',
-            phone: f.telefono || '',
-            description: QuizLogic.buildMessage(f) + '\n\nCanal: ' + (canal || '-'),
-            source: 'rqtpools.com',
-            website: f.website || ''
-          }),
-          keepalive: true
-        }).catch(function () {});
-      } catch (e) {}
-    }
-
     document.getElementById('send-wa').addEventListener('click', () => {
       if (!validate()) return;
-      saveToCaudal('WhatsApp');
       const msg = encodeURIComponent(buildMessage());
       window.open('https://wa.me/34678137051?text=' + msg, '_blank');
       showStep('done');
@@ -1096,7 +1065,6 @@
 
     document.getElementById('send-email').addEventListener('click', () => {
       if (!validate()) return;
-      saveToCaudal('Correo');
       const subject = encodeURIComponent('Solicitud de presupuesto - RQT Pools');
       const body = encodeURIComponent(buildMessage());
       window.location.href = 'mailto:hola@rqtpools.com?subject=' + subject + '&body=' + body;

@@ -95,7 +95,6 @@ Cualquier hosting de archivos estáticos funciona:
 - [x] Crear imagen Open Graph (`assets/img/og.jpg`, 1200×630px)
 - [ ] Configurar Google Business Profile en Madrid (y añadir su URL en `sameAs` del JSON-LD)
 - [ ] Sustituir las fotos de banco de imágenes por fotos reales del equipo y trabajos
-- [ ] Integrar Formspree o Brevo para almacenar leads
 - [x] Crear páginas dedicadas por servicio (`/servicios/cambio-lecho-filtrante/`, etc.)
 - [ ] Añadir Google Search Console y enviar sitemap
 

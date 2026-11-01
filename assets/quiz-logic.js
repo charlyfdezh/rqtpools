@@ -19,13 +19,6 @@
     return digits.length >= 9 && digits.length <= 15;
   }
 
-  // Comprueba si el endpoint de Formspree está configurado de verdad
-  function isFormspreeConfigured(endpoint) {
-    return typeof endpoint === 'string'
-      && endpoint.indexOf('TU_ID_AQUI') === -1
-      && /^https:\/\/formspree\.io\/f\/.+/.test(endpoint);
-  }
-
   // Normaliza el objeto lead aplicando valores por defecto
   function normalizeLead(lead) {
     lead = lead || {};
@@ -45,7 +38,7 @@
   // Reglas de validación del formulario:
   //  - nombre y localidad: OBLIGATORIOS
   //  - telefono: OBLIGATORIO y con formato válido (9-15 cifras)
-  //  - email: OBLIGATORIO y con formato válido (necesario para la autorespuesta y el CRM)
+  //  - email: OBLIGATORIO y con formato válido (para poder responder por correo)
   //  - privacidad: OBLIGATORIA (checkbox marcado)
   function validateLead(lead) {
     lead = lead || {};
@@ -88,34 +81,14 @@
     return 'mailto:' + to + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
   }
 
-  // Payload que se envía a Formspree para guardar el lead
-  function buildLeadPayload(lead, canal) {
-    var d = normalizeLead(lead);
-    return {
-      nombre: d.nombre,
-      localidad: d.localidad,
-      telefono: d.telefono || 'No indicado',
-      email: d.email || 'No indicado',
-      detalles: d.detalles || '-',
-      servicio: d.servicio,
-      tipo_piscina: d.tipo,
-      cuando: d.cuando,
-      acepta_marketing: d.marketing ? 'Sí' : 'No',
-      canal: canal || 'Sin especificar',
-      _subject: 'Nuevo lead RQT Pools - ' + d.nombre + ' (' + d.localidad + ')'
-    };
-  }
-
   var QuizLogic = {
     isValidEmail: isValidEmail,
     isValidPhone: isValidPhone,
-    isFormspreeConfigured: isFormspreeConfigured,
     normalizeLead: normalizeLead,
     validateLead: validateLead,
     buildMessage: buildMessage,
     buildWhatsAppUrl: buildWhatsAppUrl,
     buildMailtoUrl: buildMailtoUrl,
-    buildLeadPayload: buildLeadPayload,
     WHATSAPP_NUMBER: '34678137051',
     CONTACT_EMAIL: 'hola@rqtpools.com'
   };

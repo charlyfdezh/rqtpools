@@ -30,20 +30,6 @@ describe('isValidPhone', () => {
   });
 });
 
-describe('isFormspreeConfigured', () => {
-  it('es false con el placeholder', () => {
-    expect(QuizLogic.isFormspreeConfigured('https://formspree.io/f/TU_ID_AQUI')).toBe(false);
-  });
-  it('es true con un endpoint real de formspree', () => {
-    expect(QuizLogic.isFormspreeConfigured('https://formspree.io/f/REDACTED')).toBe(true);
-  });
-  it('es false con cualquier otra URL o valor no válido', () => {
-    expect(QuizLogic.isFormspreeConfigured('https://otrositio.com/f/abc')).toBe(false);
-    expect(QuizLogic.isFormspreeConfigured('')).toBe(false);
-    expect(QuizLogic.isFormspreeConfigured(null)).toBe(false);
-  });
-});
-
 describe('validateLead', () => {
   const base = {
     nombre: 'Laura',
@@ -188,16 +174,3 @@ describe('buildMailtoUrl', () => {
   });
 });
 
-describe('buildLeadPayload', () => {
-  it('incluye el canal, el asunto y los datos normalizados', () => {
-    const payload = QuizLogic.buildLeadPayload(
-      { nombre: 'Ana', localidad: 'Madrid', telefono: '600', servicio: 'Lonas y cubiertas' },
-      'WhatsApp'
-    );
-    expect(payload.canal).toBe('WhatsApp');
-    expect(payload.nombre).toBe('Ana');
-    expect(payload.servicio).toBe('Lonas y cubiertas');
-    expect(payload.email).toBe('No indicado');
-    expect(payload._subject).toBe('Nuevo lead RQT Pools - Ana (Madrid)');
-  });
-});

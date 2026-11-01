@@ -1,0 +1,16 @@
+# Configuración de GitHub Pages (Jekyll): estos archivos son internos del proyecto
+# y no deben publicarse en rqtpools.com.
+exclude:
+  - README.md
+  - package.json
+  - package-lock.json
+  - node_modules
+  - scripts
+  - tests
+  - test-results
+  - playwright.config.js
+  - vitest.config.mjs
+  - tailwind.config.js
+  - assets/tailwind-input.css
+  - qr_rqtpools.png
+  - qr_rqtpools.svg
