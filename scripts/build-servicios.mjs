@@ -1,11 +1,13 @@
-// Genera las páginas de servicio (/servicios/<slug>/index.html) y el sitemap.xml
-// a partir de scripts/servicios-data.mjs.
+// Genera las páginas de servicio (/servicios/<slug>/index.html), las páginas por
+// municipio (/zonas/<slug>/index.html) y el sitemap.xml
+// a partir de scripts/servicios-data.mjs y scripts/zonas-data.mjs.
 //
 // Uso:  npm run build:pages   (después ejecuta npm run build:css)
 import { mkdir, writeFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SERVICIOS, ZONAS } from './servicios-data.mjs';
+import { ZONAS_PAGINAS } from './zonas-data.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const SITE = 'https://rqtpools.com';
@@ -28,8 +30,13 @@ const LOGO = (color, aria) => `<svg viewBox="0 0 180 50" xmlns="http://www.w3.or
           <text x="86" y="34" font-family="'Outfit',sans-serif" font-weight="700" font-size="22" letter-spacing="1" fill="#00A3C4">Pools</text>
         </svg>`;
 
+// Enlaces a las páginas de zona (Madrid capital no tiene página propia: la cubre la home)
+const zonaLink = (z, cls) => `<a href="/zonas/${z.slug}/" class="${cls}">${esc(z.ciudad)}</a>`;
+
 function page(s) {
-  const url = `${SITE}/servicios/${s.slug}/`;
+  const esZona = s.tipo === 'zona';
+  const url = `${SITE}/${esZona ? 'zonas' : 'servicios'}/${s.slug}/`;
+  const nivel2 = esZona ? { name: 'Zonas', href: '/#zonas' } : { name: 'Servicios', href: '/#servicios' };
   const [w, h] = s.imagenSize;
 
   const schemaService = {
@@ -37,12 +44,12 @@ function page(s) {
     '@type': 'Service',
     '@id': url + '#service',
     name: s.h1,
-    serviceType: s.nombre,
+    serviceType: esZona ? 'Mantenimiento de piscinas' : s.nombre,
     description: s.intro,
     url,
     image: `${SITE}/assets/img/${s.imagen}`,
     provider: { '@type': 'LocalBusiness', '@id': `${SITE}/#business`, name: 'RQT Pools', telephone: '+34678137051', url: `${SITE}/` },
-    areaServed: ZONAS.map((z) => ({ '@type': 'City', name: z.replace(' capital', '') })),
+    areaServed: esZona ? [{ '@type': 'City', name: s.ciudad }] : ZONAS.map((z) => ({ '@type': 'City', name: z.replace(' capital', '') })),
     offers: { '@type': 'Offer', description: 'Presupuesto gratuito y sin compromiso', priceCurrency: 'EUR', url: `${SITE}/#cuestionario` }
   };
   const schemaPage = {
@@ -61,7 +68,7 @@ function page(s) {
       '@type': 'BreadcrumbList',
       itemListElement: [
         { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${SITE}/` },
-        { '@type': 'ListItem', position: 2, name: 'Servicios', item: `${SITE}/#servicios` },
+        { '@type': 'ListItem', position: 2, name: nivel2.name, item: `${SITE}${nivel2.href}` },
         { '@type': 'ListItem', position: 3, name: s.nombre, item: url }
       ]
     }
@@ -91,6 +98,10 @@ ${e.html}
             <p class="mt-3 text-muted">${esc(a)}</p>
           </details>`).join('\n');
   const relacionados = s.relacionados.map((r) => `          <a href="/servicios/${r}/" class="flex items-center justify-between gap-3 rounded-[1.25rem] border border-line bg-white p-5 font-700 transition hover:border-brand hover:text-brandDeep">${esc(bySlug[r].nombre)} <svg class="icon text-brandDeep" aria-hidden="true"><use href="/assets/icons.svg#ph-arrow-right"></use></svg></a>`).join('\n');
+  const linkCls = 'font-700 text-brandDeep underline';
+  const zonasTexto = esZona
+    ? `También trabajamos en Madrid capital, ${ZONAS_PAGINAS.filter((z) => z.slug !== s.slug).map((z) => zonaLink(z, linkCls)).join(', ')} y el resto de la Comunidad de Madrid.`
+    : `${esc(s.nombre)} en Madrid capital, ${ZONAS_PAGINAS.map((z) => zonaLink(z, linkCls)).join(', ')} y alrededores de la Comunidad de Madrid.`;
   const otros = SERVICIOS.map((o) => `          <li><a href="/servicios/${o.slug}/" class="transition hover:text-white">${esc(o.nombre)}</a></li>`).join('\n');
 
   return `<!doctype html>
@@ -170,7 +181,7 @@ ${ld(schemaFaq)}
             <ol class="flex flex-wrap items-center gap-1.5">
               <li><a href="/" class="hover:text-ink">Inicio</a></li>
               <li aria-hidden="true">/</li>
-              <li><a href="/#servicios" class="hover:text-ink">Servicios</a></li>
+              <li><a href="${nivel2.href}" class="hover:text-ink">${nivel2.name}</a></li>
               <li aria-hidden="true">/</li>
               <li aria-current="page" class="font-600 text-ink">${esc(s.nombre)}</li>
             </ol>
@@ -222,12 +233,12 @@ ${faqs}
       </section>
 
       <section class="mt-14 rounded-[1.25rem] border border-brand/15 bg-tint p-6">
-        <h2 class="font-display text-xl font-800">Zonas donde trabajamos</h2>
-        <p class="mt-2 text-muted">${esc(s.nombre)} en ${ZONAS.join(', ')} y alrededores de la Comunidad de Madrid. Lunes a sábado, de 8:00 a 20:00.</p>
+        <h2 class="font-display text-xl font-800">${esZona ? 'Otras zonas donde trabajamos' : 'Zonas donde trabajamos'}</h2>
+        <p class="mt-2 text-muted">${zonasTexto} Lunes a sábado, de 8:00 a 20:00.</p>
       </section>
 
       <section class="mt-14">
-        <h2 class="font-display text-2xl font-800 tracking-tight md:text-3xl">Otros servicios</h2>
+        <h2 class="font-display text-2xl font-800 tracking-tight md:text-3xl">${esZona ? 'Nuestros servicios' : 'Otros servicios'}</h2>
         <div class="mt-5 grid gap-3 sm:grid-cols-3">
 ${relacionados}
         </div>
@@ -272,7 +283,7 @@ ${otros}
         <p class="mb-4 font-display text-sm font-700 uppercase tracking-wide text-white">Información</p>
         <ul class="space-y-3 text-sm">
           <li>Lun a Sáb, 8:00 - 20:00</li>
-          <li>Madrid y alrededores</li>
+          <li>Madrid, ${ZONAS_PAGINAS.map((z) => zonaLink(z, 'transition hover:text-white')).join(', ')}</li>
           <li><a href="/#cuestionario" class="font-700 text-white">Pedir presupuesto</a></li>
         </ul>
       </div>
@@ -302,6 +313,7 @@ function sitemap() {
   const urls = [
     { loc: `${SITE}/`, priority: '1.0', changefreq: 'monthly' },
     ...SERVICIOS.map((s) => ({ loc: `${SITE}/servicios/${s.slug}/`, priority: '0.8', changefreq: 'monthly' })),
+    ...ZONAS_PAGINAS.map((z) => ({ loc: `${SITE}/zonas/${z.slug}/`, priority: '0.7', changefreq: 'monthly' })),
     ...['aviso-legal.html', 'politica-privacidad.html', 'politica-cookies.html'].map((p) => ({ loc: `${SITE}/${p}`, priority: '0.2', changefreq: 'yearly' }))
   ];
   return '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
@@ -314,6 +326,12 @@ for (const s of SERVICIOS) {
   await mkdir(dirname(out), { recursive: true });
   await writeFile(out, page(s), 'utf8');
   console.log('✓ servicios/' + s.slug + '/');
+}
+for (const z of ZONAS_PAGINAS) {
+  const out = join(ROOT, 'zonas', z.slug, 'index.html');
+  await mkdir(dirname(out), { recursive: true });
+  await writeFile(out, page(z), 'utf8');
+  console.log('✓ zonas/' + z.slug + '/');
 }
 await writeFile(join(ROOT, 'sitemap.xml'), sitemap(), 'utf8');
 console.log('✓ sitemap.xml');

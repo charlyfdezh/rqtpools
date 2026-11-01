@@ -19,7 +19,8 @@ const CORE = join(ROOT, 'node_modules', '@phosphor-icons', 'core', 'assets');
 const files = [
   'index.html', 'aviso-legal.html', 'politica-privacidad.html', 'politica-cookies.html',
   'scripts/build-servicios.mjs',
-  ...globSync('servicios/*/index.html', { cwd: ROOT })
+  ...globSync('servicios/*/index.html', { cwd: ROOT }),
+  ...globSync('zonas/*/index.html', { cwd: ROOT })
 ];
 
 const I_TAG = /<i class="(ph|ph-fill) ph-([a-z0-9-]+)([^"]*)"([^>]*)><\/i>/g;

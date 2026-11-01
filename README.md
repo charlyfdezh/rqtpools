@@ -22,8 +22,8 @@ Sitio web profesional de **RQT Pools**, empresa de mantenimiento de piscinas en 
 
 - **HTML5** estático (`index.html`, páginas de servicio y páginas legales)
 - **Tailwind CSS** compilado a `assets/styles.css` (paleta de marca: navy `#102A43` + teal `#00A3C4`)
-- **Bunny Fonts** (alternativa privacy-friendly a Google Fonts)
-- **Phosphor Icons** vía CDN
+- **Fuentes auto-alojadas** (Outfit + Manrope en `assets/fonts/`)
+- **Phosphor Icons** como sprite SVG auto-alojado (`assets/icons.svg`)
 - **JavaScript vanilla** (cuestionario multi-paso, banner de cookies, animaciones)
 - **JSON-LD** estructurado (LocalBusiness, WebSite, FAQPage; Service + Breadcrumb en cada servicio)
 - **GEO** (buscadores con IA): `llms.txt`, `robots.txt` abierto a sus rastreadores y datos clave en texto plano
@@ -34,7 +34,10 @@ Sitio web profesional de **RQT Pools**, empresa de mantenimiento de piscinas en 
 rqtpools/
 ├── index.html                    # Landing principal
 ├── servicios/<slug>/index.html   # Una página por servicio (GENERADAS, no editar a mano)
+├── zonas/<slug>/index.html       # Una página por municipio (GENERADAS, no editar a mano)
 ├── scripts/servicios-data.mjs    # Textos de las páginas de servicio
+├── scripts/zonas-data.mjs        # Textos de las páginas por municipio
+├── scripts/build-icons.mjs       # Sprite de iconos (assets/icons.svg) a partir de Phosphor
 ├── scripts/build-servicios.mjs   # Generador de páginas de servicio + sitemap.xml
 ├── llms.txt                      # Resumen de la empresa para ChatGPT, Claude, Gemini...
 ├── aviso-legal.html              # Aviso legal (LSSI-CE)
@@ -71,7 +74,7 @@ Luego abre [http://localhost:4173](http://localhost:4173).
 ## Editar contenido
 
 - **Home**: edita `index.html` directamente.
-- **Páginas de servicio**: edita `scripts/servicios-data.mjs` y ejecuta `npm run build`
+- **Páginas de servicio y de zona**: edita `scripts/servicios-data.mjs` o `scripts/zonas-data.mjs` y ejecuta `npm run build`
   (regenera las páginas, `sitemap.xml` y el CSS de Tailwind).
 - Si cambias datos de contacto, horario o zonas, actualiza también `llms.txt` y el JSON-LD de `index.html`.
 - Tests: `npm test`.

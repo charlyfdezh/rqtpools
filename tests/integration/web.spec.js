@@ -388,3 +388,26 @@ test.describe('Nombre del sitio e icono en Google', () => {
     }
   });
 });
+
+test.describe('Páginas por municipio (SEO local)', () => {
+  test('la home enlaza a las 5 zonas y cada una tiene H1 propio, canonical, schema y enlaces a servicios', async ({ page, request }) => {
+    await dismissCookiesBeforeLoad(page);
+    await page.goto('/');
+    const hrefs = await page.locator('#zonas a[href^="zonas/"]').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+    expect(hrefs.length).toBe(5);
+    const h1s = new Set();
+    for (const href of hrefs) {
+      await page.goto('/' + href);
+      const h1 = await page.locator('h1').innerText();
+      h1s.add(h1);
+      expect(await page.locator('link[rel="canonical"]').getAttribute('href')).toBe('https://rqtpools.com/' + href);
+      const blocks = (await page.locator('script[type="application/ld+json"]').allTextContents()).map((b) => JSON.parse(b));
+      const service = blocks.find((b) => b['@type'] === 'Service');
+      expect(service.areaServed).toHaveLength(1);
+      expect(await page.locator('main a[href^="/servicios/"]').count()).toBeGreaterThan(2);
+    }
+    expect(h1s.size).toBe(5);
+    const sitemap = await (await request.get('/sitemap.xml')).text();
+    for (const href of hrefs) expect(sitemap).toContain('https://rqtpools.com/' + href);
+  });
+});

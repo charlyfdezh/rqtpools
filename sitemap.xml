@@ -61,6 +61,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://rqtpools.com/zonas/pozuelo-de-alarcon/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rqtpools.com/zonas/las-rozas-de-madrid/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rqtpools.com/zonas/boadilla-del-monte/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rqtpools.com/zonas/majadahonda/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://rqtpools.com/zonas/alcobendas/</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://rqtpools.com/aviso-legal.html</loc>
     <lastmod>2026-11-01</lastmod>
     <changefreq>yearly</changefreq>
